@@ -1,12 +1,5 @@
-import React from "react";
+import React, { createContext } from "react";
 
-const initialState = {
-  items: [],
-  dueDate: "",
-  progress: 0,
-  totalTasks: 0,
-};
-
-const ListContext = React.createContext(initialState);
+const ListContext = React.createContext();
 
 export default ListContext;
