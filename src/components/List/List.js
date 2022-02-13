@@ -33,6 +33,7 @@ const List = () => {
 
   const addItemHandler = () => {
     listCtx.dispatchAction(AddItem(textValue));
+    // listCtx.dispatchAction({ type: "ADD_ITEM", payload: textValue });
     setTextValue(initialVal);
   };
 

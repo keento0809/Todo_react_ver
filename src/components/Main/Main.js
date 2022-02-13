@@ -1,12 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import List from "../List/List";
 import ListProvider from "../../contexts/ListProvider";
 
 const Main = () => {
   return (
-    <ListProvider>
+    <Fragment>
       <List />
-    </ListProvider>
+    </Fragment>
   );
 };
 
