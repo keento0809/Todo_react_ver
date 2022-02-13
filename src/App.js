@@ -2,7 +2,7 @@ import Main from "./components/Main/Main";
 import classes from "./App.module.css";
 
 const initialState = {
-  items: ["aaaa"],
+  items: ["TEST TASK"],
 };
 
 const App = () => {
