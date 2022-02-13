@@ -1,10 +1,15 @@
-import React, { Fragment } from "react";
+import React, { useState, useContext, useReducer } from "react";
+import ListContext from "./store/list-context";
 
 function App() {
+  const listCtx = useContext(ListContext);
+  const [test, setTest] = useState("aaaa");
+
   return (
-    <Fragment>
+    <ListContext.Provider value={test}>
       <h1>TODO REACT VER</h1>
-    </Fragment>
+      <main>{/* <List /> */}</main>
+    </ListContext.Provider>
   );
 }
 
