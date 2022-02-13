@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef } from "react";
 import ListContext from "../../contexts/list-context";
 import AddItem from "../../actions/list-action";
 import styled from "styled-components";
@@ -21,25 +21,35 @@ const UlStyles = styled.ul`
   margin: 0 auto;
 `;
 
-const initialVal = "";
-
 const List = () => {
   const listCtx = useContext(ListContext);
-  const [textValue, setTextValue] = useState(initialVal);
+  const [textValue, setTextValue] = useState("");
+
+  const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
     setTextValue(e.target.value);
+    const textLength = textInputRef.current.value.trim().length;
+
+    if (textLength > 3) {
+      console.log("The length of input is enough.");
+    }
   };
 
   const addItemHandler = () => {
     listCtx.dispatchAction(AddItem(textValue));
     // listCtx.dispatchAction({ type: "ADD_ITEM", payload: textValue });
-    setTextValue(initialVal);
+    setTextValue("");
   };
 
   return (
     <div>
-      <input value={textValue} type="text" onChange={changeTextValueHandler} />
+      <input
+        ref={textInputRef}
+        value={textValue}
+        type="text"
+        onChange={changeTextValueHandler}
+      />
       <button onClick={addItemHandler}>ADD</button>
       <UlStyles>
         {listCtx.state.items.map((item, index) => (
