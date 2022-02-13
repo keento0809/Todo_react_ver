@@ -1,24 +1,12 @@
-import React, { useReducer } from "react";
-import ListContext from "../../contexts/list-context";
-import TodoReducer from "../../reducers/TodoReducer";
+import React from "react";
 import List from "../List/List";
-
-const initialState = {
-  items: [],
-};
+import ListProvider from "../../contexts/ListProvider";
 
 const Main = () => {
-  const [state, dispatch] = useReducer(TodoReducer, initialState);
-
-  // const listContext = {
-  //   state: state,
-  //   addingItem: dispatch,
-  // };
-
   return (
-    <ListContext.Provider value={{ state, dispatch }}>
+    <ListProvider>
       <List />
-    </ListContext.Provider>
+    </ListProvider>
   );
 };
 

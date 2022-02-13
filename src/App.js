@@ -1,10 +1,6 @@
 import Main from "./components/Main/Main";
 import classes from "./App.module.css";
 
-const initialState = {
-  items: ["TEST TASK"],
-};
-
 const App = () => {
   return (
     <div className={classes.app}>

@@ -21,28 +21,31 @@ const UlStyles = styled.ul`
   margin: 0 auto;
 `;
 
+const initialVal = "";
+
 const List = () => {
   const listCtx = useContext(ListContext);
-  const [textValue, setTextValue] = useState();
+  const [textValue, setTextValue] = useState(initialVal);
 
   const changeTextValueHandler = (e) => {
     setTextValue(e.target.value);
   };
 
   const addItemHandler = () => {
-    listCtx.dispatch(AddItem(textValue));
+    listCtx.dispatchAction(AddItem(textValue));
+    setTextValue(initialVal);
   };
 
   return (
-    <ListDiv>
-      <input type="text" onChange={changeTextValueHandler} />
+    <div>
+      <input value={textValue} type="text" onChange={changeTextValueHandler} />
       <button onClick={addItemHandler}>ADD</button>
       <UlStyles>
         {listCtx.state.items.map((item, index) => (
           <p key={index}>{item}</p>
         ))}
       </UlStyles>
-    </ListDiv>
+    </div>
   );
 };
 
