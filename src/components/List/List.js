@@ -4,7 +4,8 @@ import { addItem } from "../../actions/list-action";
 
 const List = () => {
   const [textValue, setTextValue] = useState("");
-  const { state, dispatch } = useContext(ListContext);
+  // const { state, dispatch } = useContext(ListContext);
+  const listCtx = useContext(ListContext);
 
   const changeTextValueHandler = (e) => {
     setTextValue(e.target.value);
@@ -12,14 +13,14 @@ const List = () => {
 
   const addItemHandler = () => {
     console.log(textValue);
-    dispatch(addItem(textValue));
+    listCtx.dispatch(addItem(textValue));
   };
 
   return (
     <div>
       <input value={textValue} onChange={changeTextValueHandler} />
       <button onClick={addItemHandler}>ADD</button>
-      {state.items.map((item, index) => (
+      {listCtx.state.items.map((item, index) => (
         <p key={index}>{item}</p>
       ))}
     </div>
