@@ -1,11 +1,10 @@
-import React from "react";
-import "./App.css";
+import React, { Fragment } from "react";
 
 function App() {
   return (
-    <React.Fragment>
-      <p>TODO REACT VER</p>
-    </React.Fragment>
+    <Fragment>
+      <h1>TODO REACT VER</h1>
+    </Fragment>
   );
 }
 
