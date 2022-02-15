@@ -8,11 +8,20 @@ const initialState = {
 };
 
 const ListProvider = (props) => {
-  const [state, dispatch] = useReducer(TodoReducer, initialState);
+  const [listState, dispatchAction] = useReducer(TodoReducer, initialState);
+
+  const addTaskHandler = (item) => {
+    dispatchAction(addTask(item));
+  };
+
+  const removeTaskHandler = (id) => {
+    dispatchAction(removeTask(id));
+  };
 
   const listContext = {
-    state: state,
-    dispatchAction: dispatch,
+    state: listState,
+    addTask: addTaskHandler,
+    removeTask: removeTaskHandler,
   };
 
   return (
