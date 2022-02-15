@@ -1,5 +1,6 @@
 import React from "react";
 import { useReducer } from "react";
+import { addTask, removeTask } from "../actions/list-action";
 import ListContext from "./list-context";
 import TodoReducer from "../reducers/TodoReducer";
 
@@ -11,6 +12,7 @@ const ListProvider = (props) => {
   const [listState, dispatchAction] = useReducer(TodoReducer, initialState);
 
   const addTaskHandler = (item) => {
+    "Dispatching";
     dispatchAction(addTask(item));
   };
 
@@ -20,8 +22,8 @@ const ListProvider = (props) => {
 
   const listContext = {
     state: listState,
-    addTask: addTaskHandler,
-    removeTask: removeTaskHandler,
+    addToList: addTaskHandler,
+    removeFromList: removeTaskHandler,
   };
 
   return (

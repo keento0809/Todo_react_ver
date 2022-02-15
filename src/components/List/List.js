@@ -1,6 +1,6 @@
 import React, { useState, useContext, useRef } from "react";
 import ListContext from "../../contexts/list-context";
-import AddItem from "../../actions/list-action";
+import { addTask, removeTask } from "../../actions/list-action";
 import styled from "styled-components";
 
 const ListDiv = styled.div`
@@ -28,7 +28,9 @@ const List = () => {
   const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
+    // Just forward value, do not execute action here!!
     setTextValue(e.target.value);
+
     const textLength = textInputRef.current.value.trim().length;
 
     if (textLength > 3) {
@@ -37,7 +39,8 @@ const List = () => {
   };
 
   const addItemHandler = () => {
-    listCtx.dispatchAction(AddItem(textValue));
+    console.log("Works");
+    listCtx.addToList(textValue);
     // listCtx.dispatchAction({ type: "ADD_ITEM", payload: textValue });
     setTextValue("");
   };
