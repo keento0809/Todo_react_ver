@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
 import ListProvider from "./contexts/ListProvider";
 import Button from "./components/UI/Button";
 import Task from ".//components/Task/Task";
@@ -22,6 +25,7 @@ const App = () => {
       <div className={classes.app}>
         <Main />
         <Button onClick={showModalHandler}>Show Modal</Button>
+        <Footer />
       </div>
     </ListProvider>
   );
