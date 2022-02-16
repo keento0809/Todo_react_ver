@@ -16,6 +16,7 @@ const ListProvider = (props) => {
   };
 
   const removeTaskHandler = (id) => {
+    console.log("dispatching!!");
     dispatchAction(removeTask(id));
   };
 

@@ -14,6 +14,7 @@ const TodoReducer = (state, action) => {
         items: [...state.items, updatedItem],
       };
     case "REMOVE_ITEM":
+      console.log("removing reducer???");
       const deletedItem = action.payload;
       return {
         ...state,

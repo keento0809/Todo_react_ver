@@ -20,14 +20,14 @@ const UlStyle = styled.ul`
 const List = (props) => {
   const listCtx = useContext(ListContext);
   const [textValue, setTextValue] = useState("");
+  const [textIsValid, setTextIsValid] = useState(true);
 
   const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
+    const textLength = textInputRef.current.value.trim().length;
     // Just forward value, do not execute action here!!
     setTextValue(e.target.value);
-
-    const textLength = textInputRef.current.value.trim().length;
 
     if (textLength > 3) {
       console.log("The length of input is enough.");
@@ -35,12 +35,20 @@ const List = (props) => {
   };
 
   const addItemHandler = () => {
+    const textChecker = textInputRef.current.value.trim().length;
+
+    if (textChecker < 2 || textChecker > 16) {
+      setTextIsValid(false);
+      alert("Please enter a valid text (2-15)");
+      return;
+    }
     listCtx.addToList(textValue);
     setTextValue("");
   };
 
   const removeItemHandler = (id) => {
     console.log(id);
+    listCtx.removeFromList(id);
   };
 
   return (
@@ -55,17 +63,17 @@ const List = (props) => {
           />
         </div>
         <Button onClick={addItemHandler}>ADD</Button>
+        {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
       </InputStyle>
       <UlStyle>
         {listCtx.state.items.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>
-            <ListItem id={index} task={item} />
-            <span onClick={props.onOpen}>
-              <FontAwesomeIcon icon={faPenToSquare} />
-            </span>
-            <span onClick={removeItemHandler}>
-              <FontAwesomeIcon icon={faTrashCan} />
-            </span>
+            <ListItem
+              id={index}
+              task={item}
+              onClick={props.onOpen}
+              onRemove={removeItemHandler}
+            />
           </Card>
         ))}
       </UlStyle>
