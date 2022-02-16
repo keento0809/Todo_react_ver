@@ -1,5 +1,7 @@
 import React, { useState, useContext, useRef } from "react";
 import ListContext from "../../contexts/list-context";
+import Button from "../UI/Button";
+import Card from "../UI/Card";
 import { addTask, removeTask } from "../../actions/list-action";
 import styled from "styled-components";
 
@@ -29,11 +31,11 @@ const LiStyle = styled.li`
   width: 90%;
   margin: 0 auto 0.8rem;
   list-style: none;
-  border: 1px solid aquamarine;
+  border: 1px solid #bbffe8;
   border-radius: 12px;
   padding: 1rem 0;
   font-weight: bold;
-  background: aquamarine;
+  background: #bbffe8;
 `;
 
 const List = (props) => {
@@ -69,13 +71,13 @@ const List = (props) => {
           type="text"
           onChange={changeTextValueHandler}
         />
-        <button onClick={addItemHandler}>ADD</button>
+        <Button onClick={addItemHandler}>ADD</Button>
       </InputStyle>
       <UlStyle>
         {listCtx.state.items.map((item, index) => (
-          <LiStyle key={index} onClick={props.onOpen}>
+          <Card key={index} onClick={props.onOpen}>
             {item}
-          </LiStyle>
+          </Card>
         ))}
       </UlStyle>
     </div>
