@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import List from "../List/List";
-import ListProvider from "../../contexts/ListProvider";
+// import ListProvider from "../../contexts/ListProvider";
 
-const Main = () => {
+const Main = (props) => {
   return (
     <Fragment>
-      <List />
+      <List onOpen={props.onOpen} />
     </Fragment>
   );
 };

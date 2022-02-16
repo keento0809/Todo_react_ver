@@ -15,13 +15,28 @@ const ListDiv = styled.div`
   }
 `;
 
-const UlStyles = styled.ul`
-  width: 90%;
-  padding: 0;
-  margin: 0 auto;
+const InputStyle = styled.div`
+  padding: 2rem 0;
 `;
 
-const List = () => {
+const UlStyle = styled.ul`
+  width: 100%;
+  padding: 2rem 0;
+  margin: 0 auto 1rem;
+`;
+
+const LiStyle = styled.li`
+  width: 90%;
+  margin: 0 auto 0.8rem;
+  list-style: none;
+  border: 1px solid aquamarine;
+  border-radius: 12px;
+  padding: 1rem 0;
+  font-weight: bold;
+  background: aquamarine;
+`;
+
+const List = (props) => {
   const listCtx = useContext(ListContext);
   const [textValue, setTextValue] = useState("");
 
@@ -47,18 +62,22 @@ const List = () => {
 
   return (
     <div>
-      <input
-        ref={textInputRef}
-        value={textValue}
-        type="text"
-        onChange={changeTextValueHandler}
-      />
-      <button onClick={addItemHandler}>ADD</button>
-      <UlStyles>
+      <InputStyle>
+        <input
+          ref={textInputRef}
+          value={textValue}
+          type="text"
+          onChange={changeTextValueHandler}
+        />
+        <button onClick={addItemHandler}>ADD</button>
+      </InputStyle>
+      <UlStyle>
         {listCtx.state.items.map((item, index) => (
-          <p key={index}>{item}</p>
+          <LiStyle key={index} onClick={props.onOpen}>
+            {item}
+          </LiStyle>
         ))}
-      </UlStyles>
+      </UlStyle>
     </div>
   );
 };
