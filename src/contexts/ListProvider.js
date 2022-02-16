@@ -12,7 +12,6 @@ const ListProvider = (props) => {
   const [listState, dispatchAction] = useReducer(TodoReducer, initialState);
 
   const addTaskHandler = (item) => {
-    "Dispatching";
     dispatchAction(addTask(item));
   };
 

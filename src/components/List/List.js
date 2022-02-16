@@ -1,8 +1,9 @@
 import React, { useState, useContext, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import ListContext from "../../contexts/list-context";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
-import { addTask, removeTask } from "../../actions/list-action";
 import styled from "styled-components";
 
 const ListDiv = styled.div`
@@ -56,27 +57,37 @@ const List = (props) => {
   };
 
   const addItemHandler = () => {
-    console.log("Works");
     listCtx.addToList(textValue);
-    // listCtx.dispatchAction({ type: "ADD_ITEM", payload: textValue });
     setTextValue("");
+  };
+
+  const removeItemHandler = (id) => {
+    console.log(id);
   };
 
   return (
     <div>
       <InputStyle>
-        <input
-          ref={textInputRef}
-          value={textValue}
-          type="text"
-          onChange={changeTextValueHandler}
-        />
+        <div>
+          <input
+            ref={textInputRef}
+            value={textValue}
+            type="text"
+            onChange={changeTextValueHandler}
+          />
+        </div>
         <Button onClick={addItemHandler}>ADD</Button>
       </InputStyle>
       <UlStyle>
         {listCtx.state.items.map((item, index) => (
-          <Card key={index} onClick={props.onOpen}>
+          <Card key={index} id={index} onClick={props.onOpen}>
             {item}
+            <span onClick={props.onOpen}>
+              <FontAwesomeIcon icon={faPenToSquare} />
+            </span>
+            <span onClick={removeItemHandler}>
+              <FontAwesomeIcon icon={faTrashCan} />
+            </span>
           </Card>
         ))}
       </UlStyle>
