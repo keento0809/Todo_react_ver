@@ -5,7 +5,6 @@ const TodoReducer = (state, action) => {
       return {
         ...state,
         items: [...state.items, newItem],
-        // items: state.items.concat(newItem),
       };
     case "EDIT_ITEM":
       const updatedItem = action.payload;
@@ -14,11 +13,14 @@ const TodoReducer = (state, action) => {
         items: [...state.items, updatedItem],
       };
     case "REMOVE_ITEM":
-      console.log("removing reducer???");
-      const deletedItem = action.payload;
+      const deletingItemIndex = action.payload;
+      const deletingItem = state.items[deletingItemIndex];
+
+      let updatedItems = state.items.filter((item) => item !== deletingItem);
+
       return {
         ...state,
-        items: [...state.items],
+        items: updatedItems,
       };
     default:
       break;
