@@ -7,11 +7,20 @@ import classes from "./App.module.css";
 const App = () => {
   const [isModalShown, setIsModalShown] = useState(false);
 
+  const showModalHandler = () => {
+    setIsModalShown(true);
+  };
+
+  const closeModalHandler = () => {
+    setIsModalShown(false);
+  };
+
   return (
     <ListProvider>
-      {isModalShown && <Task />}
+      {isModalShown && <Task onClose={closeModalHandler} />}
       <div className={classes.app}>
         <Main />
+        <button onClick={showModalHandler}>Show Modal</button>
       </div>
     </ListProvider>
   );

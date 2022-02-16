@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import Modal from "../UI/Modal";
 import ListContext from "../../contexts/list-context";
 
 const Task = (props) => {
@@ -7,7 +8,11 @@ const Task = (props) => {
   //   const allTasks = listCtx.items.map((item) => <p>{item}</p>);
   //   const selectedItemIndex = state.items.findIndex((item) => item.id === )
 
-  return <div>aaa</div>;
+  return (
+    <Modal onClose={props.onClose}>
+      <div></div>
+    </Modal>
+  );
 };
 
 export default Task;
