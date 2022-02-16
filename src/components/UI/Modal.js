@@ -10,6 +10,19 @@ const BackdropStyle = styled.div`
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
+  /* z-index: 5; */
+`;
+
+const ModalStyle = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 3rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  background: #fff;
+  z-index: 10;
 `;
 
 const Backdrop = (props) => {
@@ -17,7 +30,7 @@ const Backdrop = (props) => {
 };
 
 const ModalOverlay = (props) => {
-  return <div>{props.children}</div>;
+  return <ModalStyle>{props.children}</ModalStyle>;
 };
 
 const portalElement = document.getElementById("overlays");
