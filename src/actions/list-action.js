@@ -5,6 +5,13 @@ export const addTask = (item) => {
   };
 };
 
+export const editTask = (id) => {
+  return {
+    type: "EDIT_ITEM",
+    payload: id,
+  };
+};
+
 export const removeTask = (id) => {
   return {
     type: "REMOVE_ITEM",

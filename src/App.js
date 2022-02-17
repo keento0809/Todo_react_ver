@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
+import ListContext from "./contexts/list-context";
 import ListProvider from "./contexts/ListProvider";
 import Button from "./components/UI/Button";
 import Task from ".//components/Task/Task";
@@ -11,8 +12,12 @@ import classes from "./App.module.css";
 const App = () => {
   const [isModalShown, setIsModalShown] = useState(false);
 
-  const showModalHandler = () => {
+  const listCtx = useContext(ListContext);
+
+  const showModalHandler = (item) => {
     setIsModalShown(true);
+    // listCtx.editToTask(item);
+    // console.log(id);
   };
 
   const closeModalHandler = () => {

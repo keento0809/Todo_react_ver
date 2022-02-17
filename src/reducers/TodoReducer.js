@@ -7,10 +7,14 @@ const TodoReducer = (state, action) => {
         items: [...state.items, newItem],
       };
     case "EDIT_ITEM":
-      const updatedItem = action.payload;
+      // const updatedItem = action.payload;
+      // const editingItemIndex = action.payload;
+      // const editingItem = state.items[editingItemIndex];
+
+      console.log("Reducer editing.");
       return {
         ...state,
-        items: [...state.items, updatedItem],
+        items: [...state.items],
       };
     case "REMOVE_ITEM":
       const deletingItemIndex = action.payload;

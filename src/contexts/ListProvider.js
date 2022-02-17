@@ -1,6 +1,6 @@
 import React from "react";
 import { useReducer } from "react";
-import { addTask, removeTask } from "../actions/list-action";
+import { addTask, editTask, removeTask } from "../actions/list-action";
 import ListContext from "./list-context";
 import TodoReducer from "../reducers/TodoReducer";
 
@@ -15,14 +15,18 @@ const ListProvider = (props) => {
     dispatchAction(addTask(item));
   };
 
+  const editTaskHandler = (item) => {
+    dispatchAction(editTask(item));
+  };
+
   const removeTaskHandler = (id) => {
-    console.log("dispatching!!");
     dispatchAction(removeTask(id));
   };
 
   const listContext = {
     state: listState,
     addToList: addTaskHandler,
+    editToTask: editTaskHandler,
     removeFromList: removeTaskHandler,
   };
 

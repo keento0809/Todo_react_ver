@@ -42,9 +42,14 @@ const List = (props) => {
       alert("Please enter a valid text (2-15)");
       return;
     }
+    // listCtx.addToList(textValue);
     listCtx.addToList(textValue);
     setTextValue("");
   };
+
+  // const editItemHandler = (id) => {
+  //   console.log("Now editing.");
+  // };
 
   const removeItemHandler = (id) => {
     console.log(id);
@@ -71,7 +76,7 @@ const List = (props) => {
             <ListItem
               id={index}
               task={item}
-              onClick={props.onOpen}
+              onOpen={props.onOpen}
               onRemove={removeItemHandler}
             />
           </Card>

@@ -12,6 +12,11 @@ const ListItemStyle = styled.div`
   justify-content: space-between;
 `;
 
+const IconStyle = styled.div`
+  display: inline-block;
+  margin-right: 1rem;
+`;
+
 const ListItem = (props) => {
   return (
     <ListItemStyle>
@@ -20,12 +25,12 @@ const ListItem = (props) => {
         <span>{props.task}</span>
       </div>
       <div>
-        <span onClick={props.onOpen}>
+        <IconStyle onClick={props.onOpen.bind(null, props.task)}>
           <FontAwesomeIcon icon={faPenToSquare} />
-        </span>
-        <span onClick={props.onRemove.bind(null, props.id)}>
+        </IconStyle>
+        <IconStyle onClick={props.onRemove.bind(null, props.id)}>
           <FontAwesomeIcon icon={faTrashCan} />
-        </span>
+        </IconStyle>
       </div>
     </ListItemStyle>
   );
