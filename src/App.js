@@ -14,10 +14,8 @@ const App = () => {
 
   const listCtx = useContext(ListContext);
 
-  const showModalHandler = (item) => {
+  const showModalHandler = () => {
     setIsModalShown(true);
-    // listCtx.editToTask(item);
-    // console.log(id);
   };
 
   const closeModalHandler = () => {

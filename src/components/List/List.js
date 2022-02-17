@@ -1,8 +1,8 @@
-import React, { useState, useContext, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
 import ListItem from "./ListItem";
+import SearchInput from "./SearchInput";
+import TaskInput from "./TaskInput";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styled from "styled-components";
@@ -20,18 +20,34 @@ const UlStyle = styled.ul`
 const List = (props) => {
   const listCtx = useContext(ListContext);
   const [textValue, setTextValue] = useState("");
+  const [filteredItems, setFilteredItems] = useState(listCtx.state.items);
+  const [searchValue, setSearchValue] = useState("");
   const [textIsValid, setTextIsValid] = useState(true);
 
   const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
     const textLength = textInputRef.current.value.trim().length;
+    console.log(e.target.value);
     // Just forward value, do not execute action here!!
     setTextValue(e.target.value);
 
     if (textLength > 3) {
       console.log("The length of input is enough.");
     }
+  };
+
+  useEffect(() => {
+    setFilteredItems(
+      listCtx.state.items.filter((item) => item.includes(searchValue))
+    );
+    console.log(filteredItems);
+  }, [textValue, searchValue]);
+
+  const searchChangeHandler = (e) => {
+    // setSearchTerm(e.target.value);
+    console.log(e.target.value);
+    setSearchValue(e.target.value);
   };
 
   const addItemHandler = () => {
@@ -42,14 +58,9 @@ const List = (props) => {
       alert("Please enter a valid text (2-15)");
       return;
     }
-    // listCtx.addToList(textValue);
     listCtx.addToList(textValue);
     setTextValue("");
   };
-
-  // const editItemHandler = (id) => {
-  //   console.log("Now editing.");
-  // };
 
   const removeItemHandler = (id) => {
     console.log(id);
@@ -58,6 +69,8 @@ const List = (props) => {
 
   return (
     <div>
+      <SearchInput onChange={searchChangeHandler} />
+      {/* <TaskInput /> */}
       <InputStyle>
         <div>
           <input
@@ -71,7 +84,17 @@ const List = (props) => {
         {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
       </InputStyle>
       <UlStyle>
-        {listCtx.state.items.map((item, index) => (
+        {/* {listCtx.state.items.map((item, index) => (
+          <Card key={index} id={index} onClick={props.onOpen}>
+            <ListItem
+              id={index}
+              task={item}
+              onOpen={props.onOpen}
+              onRemove={removeItemHandler}
+            />
+          </Card>
+        ))} */}
+        {filteredItems.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>
             <ListItem
               id={index}

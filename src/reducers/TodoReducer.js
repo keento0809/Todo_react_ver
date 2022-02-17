@@ -2,6 +2,7 @@ const TodoReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
       const newItem = action.payload;
+      console.log("Reducer adding.");
       return {
         ...state,
         items: [...state.items, newItem],
@@ -10,8 +11,6 @@ const TodoReducer = (state, action) => {
       // const updatedItem = action.payload;
       // const editingItemIndex = action.payload;
       // const editingItem = state.items[editingItemIndex];
-
-      console.log("Reducer editing.");
       return {
         ...state,
         items: [...state.items],
@@ -26,6 +25,7 @@ const TodoReducer = (state, action) => {
         ...state,
         items: updatedItems,
       };
+
     default:
       break;
   }

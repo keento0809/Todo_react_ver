@@ -18,6 +18,11 @@ const IconStyle = styled.div`
 `;
 
 const ListItem = (props) => {
+  const returnVal = {
+    id: Math.floor(Math.random() * 10000) + 1,
+    title: props.task,
+  };
+
   return (
     <ListItemStyle>
       <div>
