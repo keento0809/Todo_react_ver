@@ -30,7 +30,6 @@ const List = (props) => {
 
   const changeTextValueHandler = (e) => {
     const textLength = textInputRef.current.value.trim().length;
-    console.log(e.target.value);
     // Just forward value, do not execute action here!!
     setTextValue(e.target.value);
 
@@ -78,6 +77,7 @@ const List = (props) => {
             ref={textInputRef}
             value={textValue}
             type="text"
+            placeholder="New Task"
             onChange={changeTextValueHandler}
           />
         </div>

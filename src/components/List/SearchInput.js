@@ -9,7 +9,11 @@ const SearchInput = (props) => {
   return (
     <InputStyle>
       <div>
-        <input type="text" onChange={props.onChange} />
+        <input
+          type="text"
+          placeholder="Search Task"
+          onChange={props.onChange}
+        />
       </div>
     </InputStyle>
   );

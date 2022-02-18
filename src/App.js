@@ -27,7 +27,7 @@ const App = () => {
       {isModalShown && <Task onClose={closeModalHandler} />}
       <div className={classes.app}>
         <Main onOpen={showModalHandler} />
-        <Button onClick={showModalHandler}>Show Modal</Button>
+        {/* <Button onClick={showModalHandler}>Show Modal</Button> */}
         <Footer />
       </div>
     </ListProvider>
