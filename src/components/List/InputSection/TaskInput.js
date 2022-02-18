@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const InputStyle = styled.div`
   padding: 2rem 0;
+  text-align: center;
 `;
 
 const LabelStyle = styled.label`

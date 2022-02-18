@@ -11,14 +11,18 @@ const InputStyle = styled.div`
 const InputSection = React.forwardRef((props, ref) => {
   return (
     <div>
-      <SearchInput label="" onChange={props.onChange} />
+      <SearchInput
+        label="SEARCH TASK"
+        onChange={props.onChange}
+        inputs={{ type: "text", placeholder: "Text Here" }}
+      />
       <TaskInput
         ref={ref}
         value={props.value}
         label="ADD NEW TASK"
         inputs={{
           type: "text",
-          placeholder: "New Task",
+          placeholder: "Text Here",
         }}
         onChange={props.onTextChange}
       />

@@ -6,7 +6,6 @@ const HeaderStyle = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  /* height: 100%; */
   background: #787878;
   color: #fff;
   letter-spacing: -1.5px;
@@ -37,12 +36,12 @@ const MenuBar = styled.div`
   }
 `;
 
-const Header = () => {
+const Header = (props) => {
   return (
     <HeaderStyle>
       <HeaderContainer>
         <h2>React ToDo</h2>
-        <MenuBar>
+        <MenuBar onClick={props.onOpen}>
           <span></span>
           <span></span>
           <span></span>
