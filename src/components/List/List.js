@@ -1,8 +1,9 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
 import ListItem from "./ListItem";
-import SearchInput from "./SearchInput";
-import TaskInput from "./TaskInput";
+import InputSection from "./InputSection/InputSection";
+import SearchInput from "./InputSection/SearchInput";
+import TaskInput from "./InputSection/TaskInput";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styled from "styled-components";
@@ -70,8 +71,15 @@ const List = (props) => {
 
   return (
     <div>
-      <SearchInput onChange={searchChangeHandler} />
-      <InputStyle>
+      {/* <SearchInput onChange={searchChangeHandler} /> */}
+      <InputSection
+        ref={textInputRef}
+        value={textValue}
+        onTextChange={changeTextValueHandler}
+        onChange={searchChangeHandler}
+        onAdd={addItemHandler}
+      />
+      {/* <InputStyle>
         <div>
           <input
             ref={textInputRef}
@@ -81,9 +89,9 @@ const List = (props) => {
             onChange={changeTextValueHandler}
           />
         </div>
-        <Button onClick={addItemHandler}>ADD</Button>
-        {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
-      </InputStyle>
+        <Button onClick={addItemHandler}>ADD</Button> */}
+      {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
+      {/* </InputStyle> */}
       <UlStyle>
         {filteredItems.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>

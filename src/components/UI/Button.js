@@ -11,6 +11,7 @@ const ButtonStyle = styled.div`
   cursor: pointer;
   outline: none;
   padding: 1rem 3rem;
+  margin-top: 1rem;
   appearance: none;
 `;
 
