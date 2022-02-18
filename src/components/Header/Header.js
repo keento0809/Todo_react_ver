@@ -6,22 +6,22 @@ const HeaderStyle = styled.header`
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 60px;
+  /* height: 100%; */
   background: #787878;
   color: #fff;
-  letter-spacing: -2px;
+  letter-spacing: -1.5px;
 `;
 
 const HeaderContainer = styled.div`
   width: 95%;
   margin: 0 auto;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  & h1 {
+  & h2 {
     margin: 0;
-    line-height: 60px;
   }
 `;
 
@@ -30,9 +30,9 @@ const MenuBar = styled.div`
 
   & span {
     display: block;
-    width: 30px;
-    height: 4px;
-    margin-bottom: 4px;
+    width: 24px;
+    height: 3px;
+    margin-bottom: 3px;
     background: #fff;
   }
 `;
@@ -41,7 +41,7 @@ const Header = () => {
   return (
     <HeaderStyle>
       <HeaderContainer>
-        <h1>React ToDo</h1>
+        <h2>React ToDo</h2>
         <MenuBar>
           <span></span>
           <span></span>

@@ -2,14 +2,11 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
 import ListItem from "./ListItem";
 import InputSection from "./InputSection/InputSection";
-import SearchInput from "./InputSection/SearchInput";
-import TaskInput from "./InputSection/TaskInput";
-import Button from "../UI/Button";
 import Card from "../UI/Card";
 import styled from "styled-components";
 
-const InputStyle = styled.div`
-  padding: 2rem 0;
+const MainStyle = styled.div`
+  padding-top: 44px;
 `;
 
 const UlStyle = styled.ul`
@@ -70,7 +67,7 @@ const List = (props) => {
   };
 
   return (
-    <div>
+    <MainStyle>
       <InputSection
         ref={textInputRef}
         value={textValue}
@@ -91,7 +88,7 @@ const List = (props) => {
           </Card>
         ))}
       </UlStyle>
-    </div>
+    </MainStyle>
   );
 };
 
