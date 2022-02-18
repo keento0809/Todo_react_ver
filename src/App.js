@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import ListContext from "./contexts/list-context";
@@ -24,6 +23,7 @@ const App = () => {
 
   return (
     <ListProvider>
+      <Header />
       {isModalShown && <Task onClose={closeModalHandler} />}
       <div className={classes.app}>
         <Main onOpen={showModalHandler} />
