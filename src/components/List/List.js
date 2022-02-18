@@ -71,7 +71,6 @@ const List = (props) => {
 
   return (
     <div>
-      {/* <SearchInput onChange={searchChangeHandler} /> */}
       <InputSection
         ref={textInputRef}
         value={textValue}
@@ -79,19 +78,7 @@ const List = (props) => {
         onChange={searchChangeHandler}
         onAdd={addItemHandler}
       />
-      {/* <InputStyle>
-        <div>
-          <input
-            ref={textInputRef}
-            value={textValue}
-            type="text"
-            placeholder="New Task"
-            onChange={changeTextValueHandler}
-          />
-        </div>
-        <Button onClick={addItemHandler}>ADD</Button> */}
       {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
-      {/* </InputStyle> */}
       <UlStyle>
         {filteredItems.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>
