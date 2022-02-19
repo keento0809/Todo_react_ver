@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
 import Main from "./components/Main/Main";
 import Footer from "./components/Footer/Footer";
 import ListContext from "./contexts/list-context";
@@ -17,6 +18,7 @@ const AppStyle = Styled.div`
 
 const App = () => {
   const [isModalShown, setIsModalShown] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const listCtx = useContext(ListContext);
 
@@ -28,15 +30,20 @@ const App = () => {
     setIsModalShown(false);
   };
 
+  const loginHandler = () => {
+    setIsLoggedIn(true);
+  };
+
   return (
     <ListProvider>
       <AppStyle className={classes.app}>
         <Header onOpen={showModalHandler} />
         {isModalShown && <Task onClose={closeModalHandler} />}
-        {/* <div className={classes.app}> */}
-        <Main onOpen={showModalHandler} />
+        <main>
+          {isLoggedIn && <Main onOpen={showModalHandler} />}
+          {!isLoggedIn && <Login onLogin={loginHandler} />}
+        </main>
         <Footer />
-        {/* </div> */}
       </AppStyle>
     </ListProvider>
   );
