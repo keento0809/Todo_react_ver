@@ -9,19 +9,23 @@ const BackdropStyle = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   /* z-index: 5; */
 `;
 
 const ModalStyle = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1rem 3rem;
+  /* top: 50%;
+  left: 50%; */
+  top: 4.93%;
+  right: 0%;
+  height: 100%;
+  /* transform: translate(-50%, -50%); */
+  /* padding: 1rem 3rem; */
+  padding: 0.5rem 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-radius: 12px;
-  background: #fff;
+  /* border-radius: 12px; */
+  background: #787878;
   z-index: 10;
 `;
 
