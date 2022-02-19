@@ -17,7 +17,7 @@ const AppStyle = Styled.div`
 
 const App = () => {
   const [isModalShown, setIsModalShown] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const listCtx = useContext(ListContext);
 

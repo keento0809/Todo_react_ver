@@ -12,6 +12,7 @@ const LoginWrapper = styled.div`
 
   & h2 {
     margin: 0;
+    padding-bottom: 2rem;
   }
 `;
 

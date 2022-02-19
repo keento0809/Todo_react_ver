@@ -1,12 +1,15 @@
 import React from "react";
+import Button from "../UI/Button";
+import Input from "../UI/Input";
 
 const LoginForm = () => {
   return (
     <form>
       <label>Username</label>
-      <input type="text" />
+      <Input type="text" />
       <label>Password</label>
-      <input type="password" min="6" />
+      <Input type="password" />
+      <Button>Login</Button>
     </form>
   );
 };
