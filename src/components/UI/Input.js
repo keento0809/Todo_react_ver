@@ -15,12 +15,12 @@ const InputStyle = styled.div`
   }
 `;
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   return (
     <InputStyle>
-      <input type={props.type} />
+      <input type={props.type} ref={ref} />
     </InputStyle>
   );
-};
+});
 
 export default Input;

@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Card from "../UI/Card";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ const Login = (props) => {
       <Card>
         <LoginWrapper>
           <h2>Login Now!</h2>
-          <LoginForm onLogin={props.onLogin} />
+          <LoginForm onLogin={props.onLogin} ref={usernameInputRef} />
         </LoginWrapper>
       </Card>
     </LoginStyle>
