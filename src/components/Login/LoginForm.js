@@ -13,12 +13,12 @@ import LoginReducer from "../../reducers/LoginReducer";
 
 const initialUsernameState = {
   value: "",
-  isValid: false,
+  isValid: null,
 };
 
 const initialPasswordState = {
   value: "",
-  isValid: false,
+  isValid: null,
 };
 
 const LoginForm = (props) => {
@@ -38,18 +38,16 @@ const LoginForm = (props) => {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
-  const { isValid: usernameIsValid } = usernameState;
-  const { isValid: passwordIsValid } = passwordState;
-
+  // Check the validation of username and password
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log("Checking values");
-      setFormIsValid(usernameIsValid && passwordIsValid);
+      console.log(passwordState.isValid);
+      setFormIsValid(usernameState.isValid && passwordState.isValid);
     }, 300);
     return () => {
       clearTimeout(identifier);
     };
-  }, [usernameIsValid, passwordIsValid]);
+  }, [usernameState.isValid, passwordState.isValid]);
 
   const usernameChangeHandler = (e) => {
     dispatchUsername({
@@ -77,7 +75,7 @@ const LoginForm = (props) => {
     e.preventDefault();
     if (formIsValid) {
       authCtx.LoginUser(usernameState.value, passwordState.value);
-    } else if (!emailIsValid) {
+    } else if (!usernameState.isValid) {
       usernameInputRef.current.focus();
     } else {
       passwordInputRef.current.focus();
@@ -86,17 +84,21 @@ const LoginForm = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <label>Username</label>
       <Input
         type="text"
+        id="username"
+        label="Username"
         ref={usernameInputRef}
+        isValid={usernameState.isValid}
         onChange={usernameChangeHandler}
         onBlur={validateUsernameHandler}
       />
-      <label>Password</label>
       <Input
         type="password"
+        id="password"
+        label="Password"
         ref={passwordInputRef}
+        isValid={passwordState.isValid}
         onChange={passwordChangeHandler}
         onBlur={validatePasswordHandler}
       />

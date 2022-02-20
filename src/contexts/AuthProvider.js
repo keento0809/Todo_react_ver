@@ -4,11 +4,11 @@ import AuthContext from "./auth-context";
 const AuthProvider = (props) => {
   const [isLogIn, setIsLogIn] = useState(false);
 
-  const loginHandler = (user) => {
+  const loginHandler = () => {
     setIsLogIn(true);
   };
 
-  const logoutHandler = (user) => {
+  const logoutHandler = () => {
     setIsLogIn(false);
   };
 
