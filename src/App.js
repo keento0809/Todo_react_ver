@@ -33,11 +33,17 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+  };
+
   return (
     <ListProvider>
       <AppStyle className={classes.app}>
         <Header onOpen={showModalHandler} />
-        {isModalShown && <NavModal onClose={closeModalHandler} />}
+        {isModalShown && (
+          <NavModal onClose={closeModalHandler} onLogout={logoutHandler} />
+        )}
         <main>
           {isLoggedIn && <Main onOpen={showModalHandler} />}
           {!isLoggedIn && <Login onLogin={loginHandler} />}

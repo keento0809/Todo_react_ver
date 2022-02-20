@@ -22,7 +22,7 @@ const Login = (props) => {
       <Card>
         <LoginWrapper>
           <h2>Login Now!</h2>
-          <LoginForm />
+          <LoginForm onLogin={props.onLogin} />
         </LoginWrapper>
       </Card>
     </LoginStyle>

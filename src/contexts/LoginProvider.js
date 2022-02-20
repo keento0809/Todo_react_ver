@@ -12,6 +12,7 @@ const LoginProvider = (props) => {
   const [loginState, dispatchAction] = useReducer(LoginReducer, initialState);
 
   const loginContext = {
+    // combine useReducer to useContext
     username: loginState.username,
     password: loginState.password,
     isLogin: false,
