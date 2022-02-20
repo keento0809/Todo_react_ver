@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import Modal from "../UI/Modal";
 import Button from "../UI/Button";
+import AuthContext from "../../contexts/auth-context";
 import styled from "styled-components";
 
 const NavModalStyle = styled.div`
@@ -10,11 +11,14 @@ const NavModalStyle = styled.div`
 `;
 
 const NavModal = (props) => {
+  const authCtx = useContext(AuthContext);
+  console.log(authCtx.isLogin);
+
   return (
     <Modal onClose={props.onClose}>
       <NavModalStyle>
         <h2>
-          <a>Login</a>
+          <a>{authCtx.isLogin}</a>
         </h2>
         <Button onClick={props.onClose}>Close</Button>
         <Button onClick={props.onLogout}>Logout</Button>

@@ -2,15 +2,25 @@ import React from "react";
 
 const LoginReducer = (state, action) => {
   switch (action.type) {
-    case "LOGIN":
+    case "USER_INPUT":
       return {
         ...state.user,
-        isLogin: true,
+        isValid: true,
       };
-    case "LOGOUT":
+    case "PASSWORD_INPUT":
       return {
         ...state.user,
-        isLogin: false,
+        isValid: true,
+      };
+    case "USERNAME_BLUR":
+      return {
+        ...state.user,
+        isValid: false,
+      };
+    case "PASSWORD_BLUR":
+      return {
+        ...state.user,
+        isValid: false,
       };
     default:
       break;

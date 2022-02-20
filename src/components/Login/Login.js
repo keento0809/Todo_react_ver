@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useReducer, useContext } from "react";
 import Card from "../UI/Card";
 import LoginForm from "./LoginForm";
+import AuthContext from "../../contexts/auth-context";
 import styled from "styled-components";
+import LoginReducer from "../../reducers/LoginReducer";
 
 const LoginStyle = styled.div`
   padding-top: 84px;
