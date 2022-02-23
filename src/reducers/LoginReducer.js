@@ -22,6 +22,21 @@ const LoginReducer = (state, action) => {
         value: state.value,
         isValid: state.value.trim().length > 6,
       };
+    case "USER_IN":
+      const newUsername = action.payload.username;
+      const newPassword = action.payload.password;
+      return {
+        ...state,
+        username: newUsername,
+        password: newPassword,
+      };
+    case "USER_OUT":
+      const resetUsername = "";
+      const resetPassword = "";
+      return {
+        email: resetUsername,
+        password: resetPassword,
+      };
     default:
       break;
   }

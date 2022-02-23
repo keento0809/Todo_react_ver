@@ -40,7 +40,6 @@ const LoginForm = (props) => {
   // Check the validation of username and password
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log(passwordState.isValid);
       setFormIsValid(usernameState.isValid && passwordState.isValid);
     }, 300);
     return () => {
@@ -101,7 +100,8 @@ const LoginForm = (props) => {
         onChange={passwordChangeHandler}
         onBlur={validatePasswordHandler}
       />
-      <Button onClick={props.onLogin}>Login</Button>
+      {/* <Button onClick={props.onLogin}>Login</Button> */}
+      <Button onClick={authCtx.loginUser}>Login</Button>
     </form>
   );
 };

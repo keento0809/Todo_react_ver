@@ -1,5 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
+import AuthContext from "../../contexts/auth-context";
 import ListItem from "./ListItem";
 import InputSection from "./InputSection/InputSection";
 import Card from "../UI/Card";
@@ -8,6 +9,10 @@ import styled from "styled-components";
 const MainStyle = styled.div`
   padding-top: 44px;
   margin-top: 20px;
+
+  & h3 {
+    text-align: center;
+  }
 `;
 
 const UlStyle = styled.ul`
@@ -19,6 +24,7 @@ const UlStyle = styled.ul`
 
 const List = (props) => {
   const listCtx = useContext(ListContext);
+  const authCtx = useContext(AuthContext);
   // state for textInput
   const [textValue, setTextValue] = useState("");
   const [filteredItems, setFilteredItems] = useState(listCtx.state.items);
@@ -71,6 +77,7 @@ const List = (props) => {
   return (
     <MainStyle>
       <Card>
+        <h3>Welcome! {authCtx.state.username}</h3>
         <InputSection
           ref={textInputRef}
           value={textValue}

@@ -11,3 +11,16 @@ export const logoutAction = (user) => {
     payload: user,
   };
 };
+
+export const userLoginAct = (username, password) => {
+  return {
+    type: "USER_IN",
+    payload: { username, password },
+  };
+};
+
+export const userLogoutAct = () => {
+  return {
+    type: "USER_OUT",
+  };
+};

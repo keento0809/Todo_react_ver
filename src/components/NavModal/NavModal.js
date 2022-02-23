@@ -21,7 +21,7 @@ const NavModal = (props) => {
           <a>{authCtx.isLogin}</a>
         </h2>
         <Button onClick={props.onClose}>Close</Button>
-        <Button onClick={props.onLogout}>Logout</Button>
+        <Button onClick={authCtx.logoutUser}>Logout</Button>
       </NavModalStyle>
     </Modal>
   );
