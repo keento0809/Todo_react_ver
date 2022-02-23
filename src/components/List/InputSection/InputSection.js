@@ -5,12 +5,12 @@ import styled from "styled-components";
 import TaskInput from "./TaskInput";
 
 const InputStyle = styled.div`
-  padding: 2rem 0;
+  text-align: center;
 `;
 
 const InputSection = React.forwardRef((props, ref) => {
   return (
-    <div>
+    <InputStyle>
       <SearchInput
         label="SEARCH TASK"
         onChange={props.onChange}
@@ -27,7 +27,7 @@ const InputSection = React.forwardRef((props, ref) => {
         onChange={props.onTextChange}
       />
       <Button onClick={props.onAdd}>ADD</Button>
-    </div>
+    </InputStyle>
   );
 });
 

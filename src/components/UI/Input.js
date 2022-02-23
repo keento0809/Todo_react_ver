@@ -41,11 +41,6 @@ const InputStyle = styled.div`
     border-color: red;
     background: #fbdada;
   }
-
-  @media (min-width: 768px) {
-    align-items: center;
-    flex-direction: row;
-  }
 `;
 
 const Input = React.forwardRef((props, ref) => {

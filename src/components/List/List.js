@@ -7,12 +7,14 @@ import styled from "styled-components";
 
 const MainStyle = styled.div`
   padding-top: 44px;
+  margin-top: 20px;
 `;
 
 const UlStyle = styled.ul`
   width: 100%;
   padding: 2rem 0;
   margin: 0 auto 1rem;
+  overflow: auto;
 `;
 
 const List = (props) => {
@@ -68,14 +70,16 @@ const List = (props) => {
 
   return (
     <MainStyle>
-      <InputSection
-        ref={textInputRef}
-        value={textValue}
-        onTextChange={changeTextValueHandler}
-        onChange={searchChangeHandler}
-        onAdd={addItemHandler}
-      />
-      {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
+      <Card>
+        <InputSection
+          ref={textInputRef}
+          value={textValue}
+          onTextChange={changeTextValueHandler}
+          onChange={searchChangeHandler}
+          onAdd={addItemHandler}
+        />
+        {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
+      </Card>
       <UlStyle>
         {filteredItems.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>

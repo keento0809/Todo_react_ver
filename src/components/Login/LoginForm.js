@@ -9,7 +9,6 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 import AuthContext from "../../contexts/auth-context";
 import LoginReducer from "../../reducers/LoginReducer";
-// import { useEffect } from "react/cjs/react.production.min";
 
 const initialUsernameState = {
   value: "",

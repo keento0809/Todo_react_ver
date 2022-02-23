@@ -3,12 +3,16 @@ import styled from "styled-components";
 
 const InputStyle = styled.div`
   padding: 2rem 0;
-  text-align: center;
+  /* text-align: center; */
 
   & input {
+    outline: none;
     border: 3px solid #07ffab;
     border-radius: 8px;
     padding: 0.2rem 0.4rem;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 240px;
   }
 `;
 

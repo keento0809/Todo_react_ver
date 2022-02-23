@@ -26,6 +26,7 @@ const HeaderContainer = styled.div`
 
 const MenuBar = styled.div`
   padding-top: 0.2rem;
+  cursor: pointer;
 
   & span {
     display: block;

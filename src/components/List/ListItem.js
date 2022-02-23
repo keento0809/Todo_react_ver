@@ -26,7 +26,7 @@ const ListItem = (props) => {
   return (
     <ListItemStyle>
       <div>
-        <span>{props.id}.</span>
+        {/* <span>{props.id}.</span> */}
         <span>{props.task}</span>
       </div>
       <div>
