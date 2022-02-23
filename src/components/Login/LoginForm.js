@@ -9,6 +9,7 @@ import Button from "../UI/Button";
 import Input from "../UI/Input";
 import AuthContext from "../../contexts/auth-context";
 import LoginReducer from "../../reducers/LoginReducer";
+import { checkPassword, checkUsername } from "../../actions/login-action";
 
 const initialUsernameState = {
   value: "",
@@ -34,6 +35,8 @@ const LoginForm = (props) => {
     initialPasswordState
   );
 
+  console.log(usernameState.isValid);
+
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -48,17 +51,11 @@ const LoginForm = (props) => {
   }, [usernameState.isValid, passwordState.isValid]);
 
   const usernameChangeHandler = (e) => {
-    dispatchUsername({
-      type: "USERNAME_INPUT",
-      payload: e.target.value,
-    });
+    dispatchUsername(checkUsername(e.target.value));
   };
 
   const passwordChangeHandler = (e) => {
-    dispatchPassword({
-      type: "PASSWORD_INPUT",
-      payload: e.target.value,
-    });
+    dispatchPassword(checkPassword(e.target.value));
   };
 
   const validateUsernameHandler = () => {
@@ -71,6 +68,7 @@ const LoginForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    console.log(formIsValid);
     if (formIsValid) {
       authCtx.LoginUser(usernameState.value, passwordState.value);
     } else if (!usernameState.isValid) {
@@ -101,7 +99,7 @@ const LoginForm = (props) => {
         onBlur={validatePasswordHandler}
       />
       {/* <Button onClick={props.onLogin}>Login</Button> */}
-      <Button onClick={authCtx.loginUser}>Login</Button>
+      <Button>Login</Button>
     </form>
   );
 };

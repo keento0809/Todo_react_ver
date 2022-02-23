@@ -1,3 +1,17 @@
+export const checkUsername = (username) => {
+  return {
+    type: "USERNAME_INPUT",
+    payload: username,
+  };
+};
+
+export const checkPassword = (password) => {
+  return {
+    type: "PASSWORD_INPUT",
+    payload: password,
+  };
+};
+
 export const loginAction = (user) => {
   return {
     type: "LOGIN",
