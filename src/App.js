@@ -9,6 +9,7 @@ import ListProvider from "./contexts/ListProvider";
 import Styled from "styled-components";
 import classes from "./App.module.css";
 import NavModal from "./components/NavModal/NavModal";
+import Task from "./components/Task/Task";
 
 const AppStyle = Styled.div`
   display: flex;
@@ -45,8 +46,11 @@ const App = () => {
     <ListProvider>
       <AppStyle className={classes.app}>
         <Header onOpen={showModalHandler} />
-        {isModalShown && (
+        {/* {isModalShown && (
           <NavModal onClose={closeModalHandler} onLogout={logoutHandler} />
+        )} */}
+        {isModalShown && (
+          <Task onClose={closeModalHandler} onLogout={logoutHandler} />
         )}
         <main>
           {/* {isLoggedIn && <Main onOpen={showModalHandler} />}

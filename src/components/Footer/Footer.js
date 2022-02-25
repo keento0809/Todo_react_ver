@@ -4,6 +4,10 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import styled from "styled-components";
 
 const FooterStyle = styled.div`
+  /* position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; */
   background: #787878;
   padding: 1.5rem 0;
   margin-top: auto;

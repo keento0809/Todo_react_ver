@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Modal from "../UI/Modal";
+import TaskModal from "../UI/TaskModal";
 import ListContext from "../../contexts/list-context";
 import Button from "../UI/Button";
 import styled from "styled-components";
@@ -12,20 +12,12 @@ const Task = (props) => {
   `;
 
   return (
-    <Modal onClose={props.onClose}>
+    <TaskModal onClose={props.onClose}>
       <TaskStyle>
-        {/* <div>
-          {listCtx.state.items.map((item, index) => (
-            <h2 key={index}>{item}</h2>
-          ))}
-        </div>
-        <Button onClick={listCtx.removeFromList}>Done</Button> */}
-        <h2>
-          <a>Login</a>
-        </h2>
+        <h2>This is a test.</h2>
         <Button onClick={props.onClose}>Close</Button>
       </TaskStyle>
-    </Modal>
+    </TaskModal>
   );
 };
 

@@ -23,6 +23,7 @@ const initialPasswordState = {
 
 const LoginForm = (props) => {
   const authCtx = useContext(AuthContext);
+  console.log(authCtx.state.isLogIn);
 
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -35,7 +36,7 @@ const LoginForm = (props) => {
     initialPasswordState
   );
 
-  console.log(usernameState.isValid);
+  // console.log(usernameState.isValid);
 
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
@@ -68,9 +69,10 @@ const LoginForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formIsValid);
+    // console.log(formIsValid);
+    console.log("Why cannot login????");
     if (formIsValid) {
-      authCtx.LoginUser(usernameState.value, passwordState.value);
+      authCtx.loginUser(usernameState.value, passwordState.value);
     } else if (!usernameState.isValid) {
       usernameInputRef.current.focus();
     } else {
@@ -99,7 +101,7 @@ const LoginForm = (props) => {
         onBlur={validatePasswordHandler}
       />
       {/* <Button onClick={props.onLogin}>Login</Button> */}
-      <Button>Login</Button>
+      <Button onClick={submitHandler}>Login</Button>
     </form>
   );
 };
