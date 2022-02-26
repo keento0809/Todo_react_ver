@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import AuthContext from "../../contexts/auth-context";
 import styled from "styled-components";
 
 const HeaderStyle = styled.header`
@@ -38,16 +39,29 @@ const MenuBar = styled.div`
 `;
 
 const Header = (props) => {
+  const authCtx = useContext(AuthContext);
+  console.log(authCtx.state.isLogIn);
+
   return (
     <HeaderStyle>
       <HeaderContainer>
         <h2>React ToDo</h2>
         {/* <MenuBar onClick={props.onOpen}> */}
-        <MenuBar>
+        {/* <MenuBar>
           <span></span>
           <span></span>
           <span></span>
-        </MenuBar>
+        </MenuBar> */}
+        {!authCtx.state.isLogIn && (
+          <MenuBar>
+            <span></span>
+            <span></span>
+            <span></span>
+          </MenuBar>
+        )}
+        {authCtx.state.isLogIn && (
+          <button onClick={authCtx.logoutUser}>Logout</button>
+        )}
       </HeaderContainer>
     </HeaderStyle>
   );

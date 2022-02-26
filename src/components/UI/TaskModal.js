@@ -18,7 +18,8 @@ const ModalStyle = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 1rem 3rem;
+  min-width: 250px;
+  padding: 1.5rem 3rem;
   /* padding: 0.5rem 1rem; */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   border-radius: 12px;

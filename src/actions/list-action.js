@@ -12,10 +12,11 @@ export const editTask = (item) => {
   };
 };
 
-export const updateTask = (item) => {
+export const updateTask = (task) => {
+  console.log(task);
   return {
     type: "UPDATE_ITEM",
-    payload: item,
+    payload: task,
   };
 };
 

@@ -10,9 +10,16 @@ const ButtonStyle = styled.div`
   font-weight: bold;
   cursor: pointer;
   outline: none;
-  padding: 1rem 3rem;
-  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  min-width: 40px;
   appearance: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #fff;
+    background: #f16cf3;
+    box-shadow: 0.5px 0.5px 2px #f16cf3;
+  }
 `;
 
 const Button = (props) => {

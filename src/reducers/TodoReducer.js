@@ -16,7 +16,18 @@ const TodoReducer = (state, action) => {
         totalTask: state.totalTask,
       };
     case "UPDATE_ITEM":
-      return {};
+      const updatedTaskId = action.payload.id;
+      console.log(updatedTaskId);
+
+      let updatedTask = state.items[updatedTaskId];
+      updatedTask = action.payload.text;
+      console.log(updatedTask);
+
+      const itemsAfterUpdated = state.items.map((item) => item);
+      return {
+        items: itemsAfterUpdated,
+        totalTask: state.totalTask,
+      };
     case "REMOVE_ITEM":
       const deletingItemIndex = action.payload;
       const deletingItem = state.items[deletingItemIndex];

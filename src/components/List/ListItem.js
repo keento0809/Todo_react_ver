@@ -19,6 +19,8 @@ const IconStyle = styled.div`
 `;
 
 const ListItem = (props) => {
+  const taskInfo = [props.id, props.task];
+
   return (
     <ListItemStyle>
       <div>
@@ -26,7 +28,7 @@ const ListItem = (props) => {
       </div>
       <div>
         {/* <IconStyle onClick={props.onOpen.bind(null, props.task)}> */}
-        <IconStyle>
+        <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </IconStyle>
         <IconStyle onClick={props.onRemove.bind(null, props.id)}>

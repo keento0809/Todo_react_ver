@@ -19,7 +19,6 @@ const ListProvider = (props) => {
   const [listState, dispatchAction] = useReducer(TodoReducer, initialState);
 
   const addTaskHandler = (item) => {
-    console.log("Item is being added.");
     dispatchAction(addTask(item));
   };
 
@@ -27,8 +26,9 @@ const ListProvider = (props) => {
     dispatchAction(editTask(item));
   };
 
-  const updateTaskHandler = (item) => {
-    dispatchAction(updateTask(item));
+  const updateTaskHandler = (task) => {
+    console.log(task);
+    dispatchAction(updateTask(task));
   };
 
   const removeTaskHandler = (id) => {
