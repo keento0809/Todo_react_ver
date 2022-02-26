@@ -5,7 +5,8 @@ import ListContext from "./list-context";
 import TodoReducer from "../reducers/TodoReducer";
 
 const initialState = {
-  items: ["Initial Task"],
+  items: [],
+  // items: [{ key: "t1", id: "t1", textValue: "Initial Task" }],
 };
 
 const ListProvider = (props) => {
@@ -25,7 +26,8 @@ const ListProvider = (props) => {
   };
 
   const listContext = {
-    state: listState,
+    // state: listState,
+    items: listState.items,
     addToList: addTaskHandler,
     editToTask: editTaskHandler,
     removeFromList: removeTaskHandler,

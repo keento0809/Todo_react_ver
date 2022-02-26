@@ -11,11 +11,17 @@ const AppStyle = Styled.div`
 `;
 
 const App = () => {
+  const testArray = [
+    { id: 1, text: "aaa" },
+    { id: 2, text: "bbb" },
+  ];
+
   return (
     <ListProvider>
       <AppStyle className={classes.app}>
         <Route />
       </AppStyle>
+      {console.log(testArray.map((item) => item.text.includes("aaa")))}
     </ListProvider>
   );
 };

@@ -2,6 +2,10 @@ export const addTask = (item) => {
   return {
     type: "ADD_ITEM",
     payload: item,
+    // payload: {
+    //   id: item.id,
+    //   textValue: item.textValue,
+    // },
   };
 };
 

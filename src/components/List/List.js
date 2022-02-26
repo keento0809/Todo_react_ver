@@ -27,7 +27,8 @@ const List = (props) => {
   const authCtx = useContext(AuthContext);
   // state for textInput
   const [textValue, setTextValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(listCtx.state.items);
+  // const [filteredItems, setFilteredItems] = useState(listCtx.state.items);
+  const [filteredItems, setFilteredItems] = useState(listCtx.items);
   // state for searchInput
   const [searchValue, setSearchValue] = useState("");
   const [textIsValid, setTextIsValid] = useState(true);
@@ -46,18 +47,21 @@ const List = (props) => {
 
   useEffect(() => {
     // filtering items first, then map the list
+    // console.log(listCtx.state.items[0]);
     setFilteredItems(
-      listCtx.state.items.filter((item) => item.includes(searchValue))
+      // listCtx.state.items.filter((item) => item.includes(searchValue))
+      listCtx.items.filter((item) => item.includes(searchValue))
     );
     console.log(filteredItems);
-  }, [listCtx.state.items, textValue, searchValue]);
+    // }, [listCtx.state.items, textValue, searchValue]);
+  }, [listCtx.items, textValue, searchValue]);
 
   const searchChangeHandler = (e) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
   };
 
-  const addItemHandler = () => {
+  const addItemHandler = (item) => {
     const textChecker = textInputRef.current.value.trim().length;
 
     if (textChecker < 2 || textChecker > 16) {
@@ -65,6 +69,10 @@ const List = (props) => {
       alert("Please enter a valid text (2-15)");
       return;
     }
+    // listCtx.addToList({
+    //   id: Math.floor(Math.random() * 10000) + 1,
+    //   textValue: textValue,
+    // });
     listCtx.addToList(textValue);
     setTextValue("");
   };

@@ -12,11 +12,15 @@ const Task = (props) => {
     text-align: center;
   `;
 
+  const editTaskHandler = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <TaskModal onClose={props.onClose}>
       <TaskStyle>
         <h2>Edit your task</h2>
-        <input />
+        <input value={listCtx.items[0]} onChange={editTaskHandler} />
         <Button onClick={props.onClose}>Close</Button>
       </TaskStyle>
     </TaskModal>

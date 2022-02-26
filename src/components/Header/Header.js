@@ -42,7 +42,8 @@ const Header = (props) => {
     <HeaderStyle>
       <HeaderContainer>
         <h2>React ToDo</h2>
-        <MenuBar onClick={props.onOpen}>
+        {/* <MenuBar onClick={props.onOpen}> */}
+        <MenuBar>
           <span></span>
           <span></span>
           <span></span>

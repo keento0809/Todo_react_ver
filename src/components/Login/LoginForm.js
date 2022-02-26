@@ -23,7 +23,6 @@ const initialPasswordState = {
 
 const LoginForm = (props) => {
   const authCtx = useContext(AuthContext);
-  console.log(authCtx.state.isLogIn);
 
   const [formIsValid, setFormIsValid] = useState(false);
 
