@@ -2,17 +2,20 @@ export const addTask = (item) => {
   return {
     type: "ADD_ITEM",
     payload: item,
-    // payload: {
-    //   id: item.id,
-    //   textValue: item.textValue,
-    // },
   };
 };
 
-export const editTask = (id) => {
+export const editTask = (item) => {
   return {
     type: "EDIT_ITEM",
-    payload: id,
+    payload: item,
+  };
+};
+
+export const updateTask = (item) => {
+  return {
+    type: "UPDATE_ITEM",
+    payload: item,
   };
 };
 

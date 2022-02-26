@@ -4,17 +4,19 @@ const TodoReducer = (state, action) => {
       const newItem = action.payload;
       console.log("Reducer adding.");
       return {
-        ...state,
         items: [...state.items, newItem],
+        totalTask: state.totalTask + 1,
       };
     case "EDIT_ITEM":
-      // const updatedItem = action.payload;
+      const editItem = action.payload;
       // const editingItemIndex = action.payload;
       // const editingItem = state.items[editingItemIndex];
       return {
-        ...state,
         items: [...state.items],
+        totalTask: state.totalTask,
       };
+    case "UPDATE_ITEM":
+      return {};
     case "REMOVE_ITEM":
       const deletingItemIndex = action.payload;
       const deletingItem = state.items[deletingItemIndex];
@@ -22,8 +24,8 @@ const TodoReducer = (state, action) => {
       let updatedItems = state.items.filter((item) => item !== deletingItem);
 
       return {
-        ...state,
         items: updatedItems,
+        totalTask: state.totalTask - 1,
       };
 
     default:

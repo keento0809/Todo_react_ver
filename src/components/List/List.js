@@ -85,7 +85,8 @@ const List = (props) => {
   return (
     <MainStyle>
       <Card>
-        <h3>Welcome! {authCtx.state.userInfo.username}</h3>
+        <h3>Welcome! {authCtx.state.userInfo.username}!</h3>
+        <p>Now, {listCtx.totalTask} tasks left.</p>
         <InputSection
           ref={textInputRef}
           value={textValue}

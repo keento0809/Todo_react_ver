@@ -13,6 +13,7 @@ const CardStyle = styled.div`
   font-weight: bold;
   background: #bbffe8;
   box-shadow: 0px 7px 6px 0px #9ff8db;
+  text-align: center;
   /* box-shadow: 0 0 0 #333; */
 
   & span {
