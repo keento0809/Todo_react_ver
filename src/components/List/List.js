@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
 import AuthContext from "../../contexts/auth-context";
 import ListItem from "./ListItem";
+import TaskList from "./TaskList";
 import InputSection from "./InputSection/InputSection";
 import Card from "../UI/Card";
 import styled from "styled-components";
@@ -27,7 +28,6 @@ const List = (props) => {
   const authCtx = useContext(AuthContext);
   // state for textInput
   const [textValue, setTextValue] = useState("");
-  // const [filteredItems, setFilteredItems] = useState(listCtx.state.items);
   const [filteredItems, setFilteredItems] = useState(listCtx.items);
   // state for searchInput
   const [searchValue, setSearchValue] = useState("");
@@ -46,14 +46,10 @@ const List = (props) => {
   };
 
   useEffect(() => {
-    // filtering items first, then map the list
-    // console.log(listCtx.state.items[0]);
     setFilteredItems(
-      // listCtx.state.items.filter((item) => item.includes(searchValue))
       listCtx.items.filter((item) => item.includes(searchValue))
     );
     console.log(filteredItems);
-    // }, [listCtx.state.items, textValue, searchValue]);
   }, [listCtx.items, textValue, searchValue]);
 
   const searchChangeHandler = (e) => {
@@ -69,10 +65,6 @@ const List = (props) => {
       alert("Please enter a valid text (2-15)");
       return;
     }
-    // listCtx.addToList({
-    //   id: Math.floor(Math.random() * 10000) + 1,
-    //   textValue: textValue,
-    // });
     listCtx.addToList(textValue);
     setTextValue("");
   };
@@ -96,7 +88,7 @@ const List = (props) => {
         />
         {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
       </Card>
-      <UlStyle>
+      {/* <UlStyle>
         {filteredItems.map((item, index) => (
           <Card key={index} id={index} onClick={props.onOpen}>
             <ListItem
@@ -107,7 +99,12 @@ const List = (props) => {
             />
           </Card>
         ))}
-      </UlStyle>
+      </UlStyle> */}
+      <TaskList
+        textValue={textValue}
+        searchValue={searchValue}
+        onRemove={removeItemHandler}
+      />
     </MainStyle>
   );
 };
