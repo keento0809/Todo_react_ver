@@ -22,8 +22,6 @@ const TaskList = (props) => {
   const openTaskModalHandler = (taskInfo) => {
     const selectedTaskId = taskInfo[0];
     const selectedTaskText = taskInfo[1];
-    console.log(selectedTaskId);
-    console.log(selectedTaskText);
     setSelectedTaskId(selectedTaskId);
     setSelectedTaskText(selectedTaskText);
     setIsTaskModalOpen(true);

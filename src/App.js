@@ -21,7 +21,6 @@ const App = () => {
       <AppStyle className={classes.app}>
         <Route />
       </AppStyle>
-      {console.log(testArray.map((item) => item.text.includes("aaa")))}
     </ListProvider>
   );
 };

@@ -35,10 +35,10 @@ const LoginForm = (props) => {
     initialPasswordState
   );
 
-  // console.log(usernameState.isValid);
-
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
+
+  console.log(formIsValid);
 
   // Check the validation of username and password
   useEffect(() => {
@@ -68,8 +68,6 @@ const LoginForm = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(formIsValid);
-    console.log("Why cannot login????");
     if (formIsValid) {
       authCtx.loginUser(usernameState.value, passwordState.value);
     } else if (!usernameState.isValid) {
@@ -78,6 +76,10 @@ const LoginForm = (props) => {
       passwordInputRef.current.focus();
     }
   };
+
+  let isDisabled = true;
+
+  if (formIsValid) isDisabled = false;
 
   return (
     <form onSubmit={submitHandler}>
@@ -100,7 +102,9 @@ const LoginForm = (props) => {
         onBlur={validatePasswordHandler}
       />
       {/* <Button onClick={props.onLogin}>Login</Button> */}
-      <Button onClick={submitHandler}>Login</Button>
+      <Button onClick={submitHandler} isDisabled={isDisabled}>
+        Login
+      </Button>
     </form>
   );
 };

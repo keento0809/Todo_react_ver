@@ -40,7 +40,7 @@ const MenuBar = styled.div`
 
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
-  console.log(authCtx.state.isLogIn);
+  // console.log(authCtx.state.isLogIn);
 
   return (
     <HeaderStyle>
