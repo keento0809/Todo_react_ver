@@ -68,8 +68,11 @@ const List = (props) => {
   };
 
   useEffect(() => {
+    const regex = new RegExp(searchValue, "gi");
+    // const filteredItems = listCtx.items;
     setFilteredItems(
-      listCtx.items.filter((item) => item.includes(searchValue))
+      // listCtx.items.filter((item) => item.includes(searchValue))
+      listCtx.items.filter((item) => item.match(regex))
     );
     // console.log(filteredItems);
   }, [listCtx.items, textValue, searchValue]);
@@ -89,6 +92,7 @@ const List = (props) => {
     }
     listCtx.addToList(textValue);
     setTextValue("");
+    setTextTouched(false);
   };
 
   const removeItemHandler = (id) => {
