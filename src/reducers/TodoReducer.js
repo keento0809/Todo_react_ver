@@ -2,7 +2,6 @@ const TodoReducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
       const newItem = action.payload;
-      console.log("Reducer adding.");
       return {
         items: [...state.items, newItem],
         totalTask: state.totalTask + 1,

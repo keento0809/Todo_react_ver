@@ -12,11 +12,14 @@ const InputSection = React.forwardRef((props, ref) => {
   return (
     <InputStyle>
       <SearchInput
+        className={props.className}
         label="SEARCH TASK"
         onChange={props.onChange}
+        onBlur={props.onBlur}
         inputs={{ type: "text", placeholder: "Text Here" }}
       />
       <TaskInput
+        className={props.className}
         ref={ref}
         value={props.value}
         label="ADD NEW TASK"
@@ -25,6 +28,7 @@ const InputSection = React.forwardRef((props, ref) => {
           placeholder: "Text Here",
         }}
         onChange={props.onTextChange}
+        onBlur={props.onBlur}
       />
       <Button onClick={props.onAdd}>ADD</Button>
     </InputStyle>

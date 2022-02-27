@@ -16,11 +16,13 @@ const MainStyle = styled.div`
   }
 `;
 
-const UlStyle = styled.ul`
-  width: 100%;
-  padding: 2rem 0;
-  margin: 0 auto 1rem;
-  overflow: auto;
+const Warning = styled.div`
+  color: #fb4b4b;
+  padding: 1rem;
+
+  & p {
+    margin: 0;
+  }
 `;
 
 const List = (props) => {
@@ -31,17 +33,37 @@ const List = (props) => {
   const [filteredItems, setFilteredItems] = useState(listCtx.items);
   // state for searchInput
   const [searchValue, setSearchValue] = useState("");
-  const [textIsValid, setTextIsValid] = useState(true);
+  const [textIsValid, setTextIsValid] = useState(null);
+  const [textTouched, setTextTouched] = useState(false);
 
   const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
     const textLength = textInputRef.current.value.trim().length;
+    if ((textLength < 2 && textTouched) || (textLength > 16 && textTouched)) {
+      // console.log("Text invalid");
+      setTextIsValid(false);
+    } else {
+      // console.log("Text valid!!");
+      setTextIsValid(true);
+    }
     // Just forward value, do not execute action here!!
     setTextValue(e.target.value);
+  };
 
-    if (textLength > 3) {
-      console.log("The length of input is enough.");
+  const textInputBlurHandler = () => {
+    // console.log("Blur !!");
+    setTextTouched(true);
+    // const textLength = textInputRef.current.value.trim().length;
+    const textLength = textValue.length;
+    console.log(textTouched, "Nandeyanen!!");
+    console.log(textLength < 2 && textTouched);
+    if (textLength < 2 || (textLength > 16 && textTouched)) {
+      // console.log("Text invalid");
+      setTextIsValid(false);
+    } else {
+      // console.log("Text valid!!");
+      setTextIsValid(true);
     }
   };
 
@@ -49,7 +71,7 @@ const List = (props) => {
     setFilteredItems(
       listCtx.items.filter((item) => item.includes(searchValue))
     );
-    console.log(filteredItems);
+    // console.log(filteredItems);
   }, [listCtx.items, textValue, searchValue]);
 
   const searchChangeHandler = (e) => {
@@ -74,19 +96,30 @@ const List = (props) => {
     listCtx.removeFromList(id);
   };
 
+  const inputClassName = `${!textIsValid && textTouched ? "invalid" : ""}`;
+  // console.log(inputClassName);
+
   return (
     <MainStyle>
       <Card>
         <h3>Welcome! {authCtx.state.userInfo.username}!</h3>
         <p>Now, {listCtx.totalTask} tasks left.</p>
         <InputSection
+          // className={`${!textIsValid ? "invalid" : ""}`}
+          className={inputClassName}
           ref={textInputRef}
           value={textValue}
           onTextChange={changeTextValueHandler}
           onChange={searchChangeHandler}
           onAdd={addItemHandler}
+          onBlur={textInputBlurHandler}
         />
-        {!setTextIsValid && <p>Please enter a valid text (2-15) </p>}
+        {/* {!textIsValid && <p>Please enter a valid text (2-15) </p>} */}
+        {!textIsValid && textTouched && (
+          <Warning>
+            <p>Please enter a valid text (2-15) </p>
+          </Warning>
+        )}
       </Card>
       {/* <UlStyle>
         {filteredItems.map((item, index) => (

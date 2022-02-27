@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const InputStyle = styled.div`
@@ -14,6 +14,11 @@ const InputStyle = styled.div`
     margin: 0 auto;
     max-width: 240px;
   }
+
+  & input.invalid {
+    border-color: red;
+    background: #fbdada;
+  }
 `;
 
 const LabelStyle = styled.label`
@@ -24,15 +29,25 @@ const LabelStyle = styled.label`
 `;
 
 const TaskInput = React.forwardRef((props, ref) => {
+  const [isTextValid, setIsTextValid] = useState();
+
+  const validateTextHandler = () => {
+    props.onChange();
+    console.log(props.value);
+  };
+
   return (
     <InputStyle>
       <div>
         <LabelStyle>{props.label}</LabelStyle>
         <input
+          className={props.className}
           // Not props.ref, ref itself
           ref={ref}
           value={props.value}
           onChange={props.onChange}
+          onBlur={props.onBlur}
+          // onChange={validateTextHandler}
           {...props.inputs}
         />
       </div>

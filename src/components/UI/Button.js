@@ -33,8 +33,6 @@ const ButtonStyle = styled.button`
 `;
 
 const Button = (props) => {
-  console.log(props.isDisabled);
-
   return (
     <ButtonStyle disabled={props.isDisabled} onClick={props.onClick}>
       {props.children}
