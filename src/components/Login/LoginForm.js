@@ -10,6 +10,7 @@ import Input from "../UI/Input";
 import AuthContext from "../../contexts/auth-context";
 import LoginReducer from "../../reducers/LoginReducer";
 import { checkPassword, checkUsername } from "../../actions/login-action";
+import styled from "styled-components";
 
 const initialUsernameState = {
   value: "",
@@ -21,6 +22,10 @@ const initialPasswordState = {
   isValid: null,
 };
 
+const ErrorMessage = styled.p`
+  color: red;
+`;
+
 const LoginForm = (props) => {
   const authCtx = useContext(AuthContext);
 
@@ -30,10 +35,12 @@ const LoginForm = (props) => {
     LoginReducer,
     initialUsernameState
   );
+  const [usernameTouched, setUsernameTouched] = useState(false);
   const [passwordState, dispatchPassword] = useReducer(
     LoginReducer,
     initialPasswordState
   );
+  const [passwordTouched, setPasswordTouched] = useState(false);
 
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
@@ -59,10 +66,12 @@ const LoginForm = (props) => {
   };
 
   const validateUsernameHandler = () => {
+    setUsernameTouched(true);
     dispatchUsername({ type: "USERNAME_BLUR" });
   };
 
   const validatePasswordHandler = () => {
+    setPasswordTouched(true);
     dispatchPassword({ type: "PASSWORD_BLUR" });
   };
 
@@ -76,6 +85,9 @@ const LoginForm = (props) => {
       passwordInputRef.current.focus();
     }
   };
+
+  const userNameIsInvalid = !usernameState.isValid && usernameTouched;
+  const passwordIsInvalid = !passwordState.isValid && passwordTouched;
 
   let isDisabled = true;
 
@@ -105,6 +117,12 @@ const LoginForm = (props) => {
       <Button onClick={submitHandler} isDisabled={isDisabled}>
         Login
       </Button>
+      {userNameIsInvalid && (
+        <ErrorMessage>Username must be at least 5 letters.</ErrorMessage>
+      )}
+      {passwordIsInvalid && (
+        <ErrorMessage>Password must be at least 6 letters.</ErrorMessage>
+      )}
     </form>
   );
 };

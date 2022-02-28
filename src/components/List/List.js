@@ -34,12 +34,13 @@ const List = (props) => {
   // state for searchInput
   const [searchValue, setSearchValue] = useState("");
   const [textIsValid, setTextIsValid] = useState(null);
-  const [textTouched, setTextTouched] = useState(false);
+  const [textTouched, setTextTouched] = useState(null);
 
   const textInputRef = useRef();
 
   const changeTextValueHandler = (e) => {
     const textLength = textInputRef.current.value.trim().length;
+    // if(textLength !== '') setTextTouched
     if ((textLength < 2 && textTouched) || (textLength > 16 && textTouched)) {
       // console.log("Text invalid");
       setTextIsValid(false);
@@ -51,14 +52,19 @@ const List = (props) => {
     setTextValue(e.target.value);
   };
 
-  const textInputBlurHandler = () => {
-    // console.log("Blur !!");
+  const textInputBlurHandler = (e) => {
+    console.log("Blur !!");
     setTextTouched(true);
+
     // const textLength = textInputRef.current.value.trim().length;
     const textLength = textValue.length;
+
+    // if (textLength !== "") setTextTouched(true);
+    if (textLength == "") setTextIsValid(false);
+
     console.log(textTouched, "Nandeyanen!!");
-    console.log(textLength < 2 && textTouched);
-    if (textLength < 2 || (textLength > 16 && textTouched)) {
+    console.log(textLength < 2);
+    if ((textLength < 2 && textTouched) || (textLength > 16 && textTouched)) {
       // console.log("Text invalid");
       setTextIsValid(false);
     } else {
