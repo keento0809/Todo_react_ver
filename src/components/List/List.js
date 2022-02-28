@@ -55,22 +55,6 @@ const List = (props) => {
   const textInputBlurHandler = (e) => {
     console.log("Blur !!");
     setTextTouched(true);
-
-    // const textLength = textInputRef.current.value.trim().length;
-    const textLength = textValue.length;
-
-    // if (textLength !== "") setTextTouched(true);
-    if (textLength == "") setTextIsValid(false);
-
-    console.log(textTouched, "Nandeyanen!!");
-    console.log(textLength < 2);
-    if ((textLength < 2 && textTouched) || (textLength > 16 && textTouched)) {
-      // console.log("Text invalid");
-      setTextIsValid(false);
-    } else {
-      // console.log("Text valid!!");
-      setTextIsValid(true);
-    }
   };
 
   useEffect(() => {
@@ -106,7 +90,11 @@ const List = (props) => {
     listCtx.removeFromList(id);
   };
 
-  const inputClassName = `${!textIsValid && textTouched ? "invalid" : ""}`;
+  const textInputIsValid =
+    textValue.trim().length > 2 && textValue.trim().length < 16;
+  const textInputIsInvalid = !textIsValid && textTouched;
+
+  const inputClassName = `${textInputIsInvalid ? "invalid" : ""}`;
   // console.log(inputClassName);
 
   return (
@@ -125,7 +113,7 @@ const List = (props) => {
           onBlur={textInputBlurHandler}
         />
         {/* {!textIsValid && <p>Please enter a valid text (2-15) </p>} */}
-        {!textIsValid && textTouched && (
+        {textInputIsInvalid && (
           <Warning>
             <p>Please enter a valid text (2-15) </p>
           </Warning>

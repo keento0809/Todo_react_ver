@@ -121,7 +121,7 @@ const LoginForm = (props) => {
         <ErrorMessage>Username must be at least 5 letters.</ErrorMessage>
       )}
       {passwordIsInvalid && (
-        <ErrorMessage>Password must be at least 6 letters.</ErrorMessage>
+        <ErrorMessage>Password must be at least 7 letters.</ErrorMessage>
       )}
     </form>
   );
