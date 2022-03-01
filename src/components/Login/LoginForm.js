@@ -45,8 +45,6 @@ const LoginForm = (props) => {
   const usernameInputRef = useRef();
   const passwordInputRef = useRef();
 
-  console.log(formIsValid);
-
   // Check the validation of username and password
   useEffect(() => {
     const identifier = setTimeout(() => {

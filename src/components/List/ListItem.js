@@ -11,6 +11,10 @@ const ListItemStyle = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+
+  & span.highlight {
+    background: yellow;
+  }
 `;
 
 const IconStyle = styled.div`

@@ -57,10 +57,20 @@ const TaskList = (props) => {
                 onOpen={openTaskModalHandler}
                 onClose={closeTaskModalHandler}
                 onRemove={props.onRemove}
+                // regex={props.regex}
               />
             </Card>
           );
         })}
+        {/* {filteredItems.map((task,index) => {
+          const regexTask = item.replace(
+                regex,
+                `${(<span className="highlight">{searchValue}</span>)}`
+              );
+          return (
+
+          )
+        })} */}
       </UlStyle>
     </Fragment>
   );

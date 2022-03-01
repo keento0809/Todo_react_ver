@@ -1,7 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import ListContext from "../../contexts/list-context";
 import AuthContext from "../../contexts/auth-context";
-import ListItem from "./ListItem";
+// import ListItem from "./ListItem";
 import TaskList from "./TaskList";
 import InputSection from "./InputSection/InputSection";
 import Card from "../UI/Card";
@@ -53,16 +53,26 @@ const List = (props) => {
   };
 
   const textInputBlurHandler = (e) => {
-    console.log("Blur !!");
+    // console.log("Blur !!");
     setTextTouched(true);
   };
 
+  const regex = new RegExp(searchValue, "gi");
+
   useEffect(() => {
-    const regex = new RegExp(searchValue, "gi");
     // const filteredItems = listCtx.items;
+    // const filteredItems = listCtx.items.filter((item) => item.match(regex));
+
     setFilteredItems(
       // listCtx.items.filter((item) => item.includes(searchValue))
       listCtx.items.filter((item) => item.match(regex))
+      // filteredItems.map((item) => {
+      //   const regexItem = item.replace(
+      //     regex,
+      //     `${(<span className="highlight">{searchValue}</span>)}`
+      //   );
+      //   return regexItem;
+      // })
     );
     // console.log(filteredItems);
   }, [listCtx.items, textValue, searchValue]);
@@ -135,6 +145,7 @@ const List = (props) => {
         textValue={textValue}
         searchValue={searchValue}
         onRemove={removeItemHandler}
+        regex={regex}
       />
     </MainStyle>
   );
