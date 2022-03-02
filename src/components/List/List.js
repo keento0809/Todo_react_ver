@@ -105,7 +105,6 @@ const List = (props) => {
   const textInputIsInvalid = !textIsValid && textTouched;
 
   const inputClassName = `${textInputIsInvalid ? "invalid" : ""}`;
-  // console.log(inputClassName);
 
   return (
     <MainStyle>
