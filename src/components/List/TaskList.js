@@ -68,6 +68,7 @@ const TaskList = (props) => {
     } catch (error) {
       setError(error.message);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -110,22 +111,24 @@ const TaskList = (props) => {
         })} */}
       </UlStyle>
       <UlStyle>
-        {fetchedTasks.map((task, index) => {
-          return (
-            <Card key={task.id} id={index} onClick={props.onOpen}>
-              <ListItem
-                id={index}
-                task={task.text}
-                onOpen={openTaskModalHandler}
-                onClose={closeTaskModalHandler}
-                onRemove={props.onRemove}
-              />
-              {/* <li key={task.id}>
+        {isLoading && <p>Loading...</p>}
+        {!isLoading &&
+          fetchedTasks.map((task, index) => {
+            return (
+              <Card key={task.id} id={index} onClick={props.onOpen}>
+                <ListItem
+                  id={index}
+                  task={task.text}
+                  onOpen={openTaskModalHandler}
+                  onClose={closeTaskModalHandler}
+                  onRemove={props.onRemove}
+                />
+                {/* <li key={task.id}>
                 <p>{task.text}</p>
               </li> */}
-            </Card>
-          );
-        })}
+              </Card>
+            );
+          })}
       </UlStyle>
     </Fragment>
   );

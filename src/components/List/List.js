@@ -101,7 +101,7 @@ const List = (props) => {
   };
 
   const textInputIsValid =
-    textValue.trim().length > 2 && textValue.trim().length < 16;
+    textValue.trim().length > 1 && textValue.trim().length < 16;
   const textInputIsInvalid = !textIsValid && textTouched;
 
   const inputClassName = `${textInputIsInvalid ? "invalid" : ""}`;
@@ -120,6 +120,7 @@ const List = (props) => {
           onChange={searchChangeHandler}
           onAdd={addItemHandler}
           onBlur={textInputBlurHandler}
+          isDisabled={textInputIsValid}
         />
         {/* {!textIsValid && <p>Please enter a valid text (2-15) </p>} */}
         {textInputIsInvalid && (

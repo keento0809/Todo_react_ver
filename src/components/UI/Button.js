@@ -34,7 +34,7 @@ const ButtonStyle = styled.button`
 
 const Button = (props) => {
   return (
-    <ButtonStyle disabled={props.isDisabled} onClick={props.onClick}>
+    <ButtonStyle disabled={!props.isDisabled} onClick={props.onClick}>
       {props.children}
     </ButtonStyle>
   );
