@@ -4,7 +4,6 @@ import styled from "styled-components";
 const InputStyle = styled.div`
   padding: 2rem 0;
   /* text-align: center; */
-
   & input {
     outline: none;
     border: 3px solid #07ffab;
@@ -14,7 +13,6 @@ const InputStyle = styled.div`
     margin: 0 auto;
     max-width: 240px;
   }
-
   & input.invalid {
     border-color: red;
     background: #fbdada;

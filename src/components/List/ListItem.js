@@ -25,6 +25,8 @@ const IconStyle = styled.div`
 const ListItem = (props) => {
   const taskInfo = [props.id, props.task];
 
+  // console.log(props.task);
+
   return (
     <ListItemStyle>
       <div>

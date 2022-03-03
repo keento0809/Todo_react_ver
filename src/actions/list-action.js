@@ -5,6 +5,13 @@ export const addTask = (item) => {
   };
 };
 
+export const fetchTasks = (array) => {
+  return {
+    type: "FETCH_ITEMS",
+    payload: array,
+  };
+};
+
 export const editTask = (item) => {
   return {
     type: "EDIT_ITEM",

@@ -10,7 +10,6 @@ import styled from "styled-components";
 const MainStyle = styled.div`
   padding-top: 44px;
   margin-top: 20px;
-
   & h3 {
     text-align: center;
   }
@@ -19,7 +18,6 @@ const MainStyle = styled.div`
 const Warning = styled.div`
   color: #fb4b4b;
   padding: 1rem;
-
   & p {
     margin: 0;
   }
@@ -120,7 +118,7 @@ const List = (props) => {
           onChange={searchChangeHandler}
           onAdd={addItemHandler}
           onBlur={textInputBlurHandler}
-          isDisabled={textInputIsValid}
+          isDisabled={!textInputIsValid}
         />
         {/* {!textIsValid && <p>Please enter a valid text (2-15) </p>} */}
         {textInputIsInvalid && (

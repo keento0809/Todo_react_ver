@@ -106,7 +106,6 @@ const TaskList = (props) => {
                 `${(<span className="highlight">{searchValue}</span>)}`
               );
           return (
-
           )
         })} */}
       </UlStyle>
