@@ -9,7 +9,6 @@ const InputStyle = styled.div`
 `;
 
 const InputSection = React.forwardRef((props, ref) => {
-  console.log(props.isDisabled);
   return (
     <InputStyle>
       <SearchInput
@@ -31,7 +30,15 @@ const InputSection = React.forwardRef((props, ref) => {
         onChange={props.onTextChange}
         onBlur={props.onBlur}
       />
+      {/* Default code. DO NOT CHANGE !!! */}
       <Button onClick={props.onAdd} isDisabled={props.isDisabled}>
+        {/* TEST */}
+        {/* 
+        <Button
+        onClick={props.onAddTaskToDataBase.bind(null, { text: props.value })}
+        isDisabled={props.isDisabled}
+      >
+      */}
         ADD
       </Button>
     </InputStyle>

@@ -28,11 +28,14 @@ const List = (props) => {
   const authCtx = useContext(AuthContext);
   // state for textInput
   const [textValue, setTextValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(listCtx.items);
   // state for searchInput
   const [searchValue, setSearchValue] = useState("");
   const [textIsValid, setTextIsValid] = useState(null);
   const [textTouched, setTextTouched] = useState(null);
+
+  // state for adding task to firebase
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const textInputRef = useRef();
 
@@ -40,10 +43,8 @@ const List = (props) => {
     const textLength = textInputRef.current.value.trim().length;
     // if(textLength !== '') setTextTouched
     if ((textLength < 2 && textTouched) || (textLength > 16 && textTouched)) {
-      // console.log("Text invalid");
       setTextIsValid(false);
     } else {
-      // console.log("Text valid!!");
       setTextIsValid(true);
     }
     // Just forward value, do not execute action here!!
@@ -51,33 +52,44 @@ const List = (props) => {
   };
 
   const textInputBlurHandler = (e) => {
-    // console.log("Blur !!");
     setTextTouched(true);
   };
 
   const regex = new RegExp(searchValue, "gi");
 
-  useEffect(() => {
-    // const filteredItems = listCtx.items;
-    // const filteredItems = listCtx.items.filter((item) => item.match(regex));
-
-    setFilteredItems(
-      // listCtx.items.filter((item) => item.includes(searchValue))
-      listCtx.items.filter((item) => item.match(regex))
-      // filteredItems.map((item) => {
-      //   const regexItem = item.replace(
-      //     regex,
-      //     `${(<span className="highlight">{searchValue}</span>)}`
-      //   );
-      //   return regexItem;
-      // })
-    );
-    // console.log(filteredItems);
-  }, [listCtx.items, textValue, searchValue]);
-
   const searchChangeHandler = (e) => {
     console.log(e.target.value);
     setSearchValue(e.target.value);
+  };
+
+  const addTaskToDataBaseHandler = async (value) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        "https://react-costum-components-default-rtdb.firebaseio.com/tests.json",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            text: value.text,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      const generatedId = data.name;
+      const newData = {
+        id: generatedId,
+        text: value.text,
+      };
+
+      console.log(newData);
+    } catch (error) {
+      setError(error.message);
+    }
+    setIsLoading(false);
   };
 
   const addItemHandler = (item) => {
@@ -110,7 +122,6 @@ const List = (props) => {
         <h3>Welcome! {authCtx.state.userInfo.username}!</h3>
         <p>Now, {listCtx.totalTask} tasks left.</p>
         <InputSection
-          // className={`${!textIsValid ? "invalid" : ""}`}
           className={inputClassName}
           ref={textInputRef}
           value={textValue}
@@ -119,26 +130,14 @@ const List = (props) => {
           onAdd={addItemHandler}
           onBlur={textInputBlurHandler}
           isDisabled={!textInputIsValid}
+          onAddTaskToDataBase={addTaskToDataBaseHandler}
         />
-        {/* {!textIsValid && <p>Please enter a valid text (2-15) </p>} */}
         {textInputIsInvalid && (
           <Warning>
             <p>Please enter a valid text (2-15) </p>
           </Warning>
         )}
       </Card>
-      {/* <UlStyle>
-        {filteredItems.map((item, index) => (
-          <Card key={index} id={index} onClick={props.onOpen}>
-            <ListItem
-              id={index}
-              task={item}
-              onOpen={props.onOpen}
-              onRemove={removeItemHandler}
-            />
-          </Card>
-        ))}
-      </UlStyle> */}
       <TaskList
         textValue={textValue}
         searchValue={searchValue}

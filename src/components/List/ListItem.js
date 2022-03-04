@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import styled from "styled-components";
 import ListContext from "../../contexts/list-context";
+import { Fragment } from "react/cjs/react.production.min";
 
 const ListItemStyle = styled.div`
   width: 80%;
@@ -28,20 +29,39 @@ const ListItem = (props) => {
   // console.log(props.task);
 
   return (
-    <ListItemStyle>
-      <div>
-        <span>{props.task}</span>
-      </div>
-      <div>
-        {/* <IconStyle onClick={props.onOpen.bind(null, props.task)}> */}
-        <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </IconStyle>
-        <IconStyle onClick={props.onRemove.bind(null, props.id)}>
-          <FontAwesomeIcon icon={faTrashCan} />
-        </IconStyle>
-      </div>
-    </ListItemStyle>
+    <Fragment>
+      {/* Default code. DO NOT CHANGE !!!! */}
+      {/*
+      <ListItemStyle>
+        <div>
+          <span>{props.task}</span>
+        </div>
+        <div>
+          <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </IconStyle>
+          <IconStyle onClick={props.onRemove.bind(null, props.id)}>
+            <FontAwesomeIcon icon={faTrashCan} />
+          </IconStyle>
+        </div>
+      </ListItemStyle>
+      */}
+
+      <ListItemStyle key={props.key}>
+        <div>
+          <span>{props.task}</span>
+        </div>
+        <div>
+          {/* <IconStyle onClick={props.onOpen.bind(null, props.task)}> */}
+          <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </IconStyle>
+          <IconStyle onClick={props.onRemove.bind(null, props.id)}>
+            <FontAwesomeIcon icon={faTrashCan} />
+          </IconStyle>
+        </div>
+      </ListItemStyle>
+    </Fragment>
   );
 };
 

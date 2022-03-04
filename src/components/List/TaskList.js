@@ -47,6 +47,7 @@ const TaskList = (props) => {
 
     try {
       const response = await fetch(
+        // Default code. DO NOT CHANGE !!!!
         "https://react-costum-components-default-rtdb.firebaseio.com/tasks.json"
       );
       if (!response.ok) {
@@ -56,6 +57,8 @@ const TaskList = (props) => {
 
       const loadedData = [];
 
+      // test !!!!!
+      // test !!!!!
       for (const taskKey in data) {
         loadedData.push({
           id: taskKey,
@@ -63,8 +66,14 @@ const TaskList = (props) => {
         });
       }
 
-      console.log(loadedData);
+      console.log(listCtx.items);
+
+      // temporary hidden !!!
       setFetchedTasks(loadedData);
+
+      // test!!!!
+      // test!!!!
+      // listCtx.fetchItems(listCtx.items);
     } catch (error) {
       setError(error.message);
     }
@@ -86,8 +95,11 @@ const TaskList = (props) => {
         />
       )}
       <UlStyle>
+        {/* Default. DO NOT CHANGE !!!! */}
         {filteredItems.map((task, index) => {
           return (
+            // {/* Default. DO NOT CHANGE !!!! */}
+            // <Card key={index} id={index} onClick={props.onOpen}>
             <Card key={index} id={index} onClick={props.onOpen}>
               <ListItem
                 id={index}
@@ -95,40 +107,28 @@ const TaskList = (props) => {
                 onOpen={openTaskModalHandler}
                 onClose={closeTaskModalHandler}
                 onRemove={props.onRemove}
-                // regex={props.regex}
               />
             </Card>
           );
         })}
-        {/* {filteredItems.map((task,index) => {
-          const regexTask = item.replace(
-                regex,
-                `${(<span className="highlight">{searchValue}</span>)}`
-              );
+      </UlStyle>
+      {/* test ul */}
+      {/* <UlStyle className="YEEAAAHHHHHHHH">
+        {props.filteredItems.map((task, index) => {
           return (
-          )
-        })} */}
-      </UlStyle>
-      <UlStyle>
-        {isLoading && <p>Loading...</p>}
-        {!isLoading &&
-          fetchedTasks.map((task, index) => {
-            return (
-              <Card key={task.id} id={index} onClick={props.onOpen}>
-                <ListItem
-                  id={index}
-                  task={task.text}
-                  onOpen={openTaskModalHandler}
-                  onClose={closeTaskModalHandler}
-                  onRemove={props.onRemove}
-                />
-                {/* <li key={task.id}>
-                <p>{task.text}</p>
-              </li> */}
-              </Card>
-            );
-          })}
-      </UlStyle>
+            <Card key={index} id={index} onClick={props.onOpen}>
+              <ListItem
+                key={task.id}
+                id={task.id}
+                task={task.text}
+                onOpen={openTaskModalHandler}
+                onClose={closeTaskModalHandler}
+                onRemove={props.onRemove}
+              />
+            </Card>
+          );
+        })}
+      </UlStyle> */}
     </Fragment>
   );
 };

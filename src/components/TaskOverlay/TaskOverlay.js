@@ -15,7 +15,7 @@ const TaskStyles = styled.div`
   }
 
   & input {
-    border: 2px solid #000;
+    border: 2px solid #07ffab;
     border-radius: 4px;
     min-width: 200px;
     padding: 0.2rem 0.4rem;
@@ -36,7 +36,7 @@ const TaskOverlay = (props) => {
 
   const startEditTaskHandler = (e) => {
     props.onSetSelectedTaskText(e.target.value);
-    console.log(props.selectedTaskText);
+    // console.log(props.selectedTaskText);
   };
 
   const updateTaskHandler = (e) => {
