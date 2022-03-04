@@ -39,7 +39,7 @@ const TaskList = (props) => {
     setFilteredItems(
       listCtx.items.filter((item) => item.includes(props.searchValue))
     );
-  }, [listCtx.items, props.textValue, props.searchValue, selectedTaskText]);
+  }, [listCtx.items, props.searchValue, selectedTaskText]);
 
   const fetchTaskListHandler = async () => {
     setIsLoading(true);
@@ -81,6 +81,7 @@ const TaskList = (props) => {
   };
 
   useEffect(() => {
+    console.log("It must work only one time...");
     fetchTaskListHandler();
   }, []);
 

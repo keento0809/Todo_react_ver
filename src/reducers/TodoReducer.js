@@ -8,15 +8,6 @@ const TodoReducer = (state, action) => {
         totalTask: state.totalTask + 1,
       };
 
-    case "FETCH_ITEMS":
-      console.log(action.payload);
-      return {
-        items: [action.payload],
-        // items: [...state.items],
-        totalTask: state.totalTask,
-        // totalTask: action.payload.length,
-      };
-
     case "UPDATE_ITEM":
       const updatedTaskId = action.payload.id;
 

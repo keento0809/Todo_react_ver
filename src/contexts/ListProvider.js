@@ -21,10 +21,6 @@ const ListProvider = (props) => {
     dispatchAction(addTask(item));
   };
 
-  const fetchItemsHandler = (array) => {
-    dispatchAction(fetchTasks(array));
-  };
-
   const updateTaskHandler = (task) => {
     dispatchAction(updateTask(task));
   };
@@ -35,7 +31,6 @@ const ListProvider = (props) => {
 
   const listContext = {
     items: listState.items,
-    fetchItems: fetchItemsHandler,
     totalTask: listState.totalTask,
     addToList: addTaskHandler,
     updateOfTask: updateTaskHandler,

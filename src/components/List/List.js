@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef, useEffect } from "react";
+import React, { useState, useContext, useRef } from "react";
 import ListContext from "../../contexts/list-context";
 import AuthContext from "../../contexts/auth-context";
 // import ListItem from "./ListItem";

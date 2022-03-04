@@ -32,13 +32,6 @@ const InputSection = React.forwardRef((props, ref) => {
       />
       {/* Default code. DO NOT CHANGE !!! */}
       <Button onClick={props.onAdd} isDisabled={props.isDisabled}>
-        {/* TEST */}
-        {/* 
-        <Button
-        onClick={props.onAddTaskToDataBase.bind(null, { text: props.value })}
-        isDisabled={props.isDisabled}
-      >
-      */}
         ADD
       </Button>
     </InputStyle>
