@@ -1,17 +1,17 @@
 import React from "react";
 import { useReducer } from "react";
-import {
-  addTask,
-  fetchTasks,
-  updateTask,
-  removeTask,
-} from "../actions/list-action";
+import { addTask, updateTask, removeTask } from "../actions/list-action";
 import ListContext from "./list-context";
 import TodoReducer from "../reducers/TodoReducer";
 
 const initialState = {
+  // Default code. DO NOT CHANGE !!!
   items: [],
   totalTask: 0,
+
+  // test
+  // items: ["test task1"],
+  // totalTask: 1,
 };
 
 const ListProvider = (props) => {

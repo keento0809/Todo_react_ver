@@ -35,11 +35,11 @@ const TaskList = (props) => {
     setIsTaskModalOpen(false);
   };
 
-  useEffect(() => {
-    setFilteredItems(
-      listCtx.items.filter((item) => item.includes(props.searchValue))
-    );
-  }, [listCtx.items, props.searchValue, selectedTaskText]);
+  // useEffect(() => {
+  //   setFilteredItems(
+  //     listCtx.items.filter((item) => item.includes(props.searchValue))
+  //   );
+  // }, [listCtx.items, props.searchValue, selectedTaskText]);
 
   const fetchTaskListHandler = async () => {
     setIsLoading(true);
@@ -55,10 +55,8 @@ const TaskList = (props) => {
       }
       const data = await response.json();
 
+      // Default code. DO NOT CHANGE !!!!
       const loadedData = [];
-
-      // test !!!!!
-      // test !!!!!
       for (const taskKey in data) {
         loadedData.push({
           id: taskKey,
@@ -66,14 +64,14 @@ const TaskList = (props) => {
         });
       }
 
+      // test !!
+      for (const taskKey in data) {
+        listCtx.items.push(data[taskKey].text);
+      }
       console.log(listCtx.items);
 
       // temporary hidden !!!
       setFetchedTasks(loadedData);
-
-      // test!!!!
-      // test!!!!
-      // listCtx.fetchItems(listCtx.items);
     } catch (error) {
       setError(error.message);
     }
@@ -84,6 +82,15 @@ const TaskList = (props) => {
     console.log("It must work only one time...");
     fetchTaskListHandler();
   }, []);
+
+  useEffect(() => {
+    setFilteredItems(
+      listCtx.items.filter((item) => item.includes(props.searchValue))
+    );
+  }, [listCtx.items, props.searchValue, selectedTaskText]);
+
+  // test !!!
+  // fetchTaskListHandler();
 
   return (
     <Fragment>
