@@ -6,7 +6,7 @@ export const addTask = (item) => {
 };
 
 export const fetchTasks = (array) => {
-  console.log("fetching....!!!");
+  console.log(array, "I'm fetching ~~~~~!!!!");
   return {
     type: "FETCH_ITEMS",
     payload: array,

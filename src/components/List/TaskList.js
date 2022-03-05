@@ -57,18 +57,27 @@ const TaskList = (props) => {
 
       // Default code. DO NOT CHANGE !!!!
       const loadedData = [];
+      const testData = [];
       for (const taskKey in data) {
         loadedData.push({
           id: taskKey,
           text: data[taskKey].text,
         });
+        testData.push(data[taskKey].text);
       }
-
+      console.log(loadedData);
       // test !!
-      for (const taskKey in data) {
-        listCtx.items.push(data[taskKey].text);
-      }
-      console.log(listCtx.items);
+      listCtx.fetchTasks(testData);
+      // for (const taskKey in data) {
+      //   listCtx.items.push(data[taskKey].text);
+      // }
+
+      // test 2
+      // for (const taskKey in data) {
+      // listCtx.items.fetchTasks(data[taskKey].text);
+      // listCtx.items.fetchTasks(loadedData);
+      // }
+      // console.log(listCtx.items);
 
       // temporary hidden !!!
       setFetchedTasks(loadedData);
@@ -102,7 +111,7 @@ const TaskList = (props) => {
           onSetSelectedTaskText={setSelectedTaskText}
         />
       )}
-      <UlStyle>
+      <UlStyle className="aaaaaaAAAAAAAAaa">
         {/* Default. DO NOT CHANGE !!!! */}
         {filteredItems.map((task, index) => {
           return (
