@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
 import styled from "styled-components";
+import ListContext from "../../contexts/list-context";
 
 const HeaderStyle = styled.header`
   position: fixed;
@@ -40,7 +41,13 @@ const MenuBar = styled.div`
 
 const Header = (props) => {
   const authCtx = useContext(AuthContext);
-  // console.log(authCtx.state.isLogIn);
+  const listCtx = useContext(ListContext);
+
+  // Test !!!!!!!!
+  const proceedToLogOutHandler = () => {
+    listCtx.resetList();
+    authCtx.logoutUser();
+  };
 
   return (
     <HeaderStyle>
@@ -60,7 +67,9 @@ const Header = (props) => {
           </MenuBar>
         )}
         {authCtx.state.isLogIn && (
-          <button onClick={authCtx.logoutUser}>Logout</button>
+          // Default code. DO NOT CHANGE !!!
+          // <button onClick={authCtx.logoutUser}>Logout</button>
+          <button onClick={proceedToLogOutHandler}>Logout</button>
         )}
       </HeaderContainer>
     </HeaderStyle>

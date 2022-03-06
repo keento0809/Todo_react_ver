@@ -5,6 +5,7 @@ import {
   fetchTasks,
   updateTask,
   removeTask,
+  resetListAction,
 } from "../actions/list-action";
 import ListContext from "./list-context";
 import TodoReducer from "../reducers/TodoReducer";
@@ -38,6 +39,10 @@ const ListProvider = (props) => {
     dispatchAction(removeTask(id));
   };
 
+  const resetListHandler = () => {
+    dispatchAction(resetListAction());
+  };
+
   const listContext = {
     items: listState.items,
     totalTask: listState.totalTask,
@@ -45,6 +50,7 @@ const ListProvider = (props) => {
     addToList: addTaskHandler,
     updateOfTask: updateTaskHandler,
     removeFromList: removeTaskHandler,
+    resetList: resetListHandler,
   };
 
   return (

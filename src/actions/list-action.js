@@ -34,3 +34,9 @@ export const removeTask = (id) => {
     payload: id,
   };
 };
+
+export const resetListAction = () => {
+  return {
+    type: "RESET_LIST",
+  };
+};

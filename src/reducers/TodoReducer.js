@@ -38,6 +38,11 @@ const TodoReducer = (state, action) => {
         totalTask: state.totalTask - 1,
       };
 
+    case "RESET_LIST":
+      return {
+        items: [],
+        totalTask: 0,
+      };
     default:
       break;
   }

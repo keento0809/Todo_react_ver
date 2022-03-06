@@ -1,9 +1,9 @@
 import React, { useReducer, useContext } from "react";
 import Card from "../UI/Card";
 import LoginForm from "./LoginForm";
-import AuthContext from "../../contexts/auth-context";
 import styled from "styled-components";
 import LoginReducer from "../../reducers/LoginReducer";
+import ListContext from "../../contexts/list-context";
 
 const LoginStyle = styled.div`
   padding-top: 84px;
@@ -19,6 +19,9 @@ const LoginWrapper = styled.div`
 `;
 
 const Login = (props) => {
+  const listCtx = useContext(ListContext);
+  console.log(listCtx.items);
+
   return (
     <LoginStyle>
       <Card>
