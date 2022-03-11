@@ -24,6 +24,7 @@ const TaskList = (props) => {
   const [error, setError] = useState(null);
 
   const openTaskModalHandler = (taskInfo) => {
+    console.log(taskInfo);
     const selectedTaskId = taskInfo[0];
     const selectedTaskText = taskInfo[1];
     setSelectedTaskId(selectedTaskId);
@@ -34,12 +35,6 @@ const TaskList = (props) => {
   const closeTaskModalHandler = () => {
     setIsTaskModalOpen(false);
   };
-
-  // useEffect(() => {
-  //   setFilteredItems(
-  //     listCtx.items.filter((item) => item.includes(props.searchValue))
-  //   );
-  // }, [listCtx.items, props.searchValue, selectedTaskText]);
 
   const fetchTaskListHandler = async () => {
     setIsLoading(true);
@@ -84,11 +79,7 @@ const TaskList = (props) => {
     setFilteredItems(
       listCtx.items.filter((item) => item.includes(props.searchValue))
     );
-    console.log(listCtx.items);
   }, [listCtx.items, props.searchValue, selectedTaskText]);
-
-  // test !!!
-  // fetchTaskListHandler();
 
   return (
     <Fragment>
@@ -100,12 +91,11 @@ const TaskList = (props) => {
           onSetSelectedTaskText={setSelectedTaskText}
         />
       )}
-      <UlStyle className="aaaaaaAAAAAAAAaa">
+      <UlStyle>
         {/* Default. DO NOT CHANGE !!!! */}
         {filteredItems.map((task, index) => {
           return (
             // {/* Default. DO NOT CHANGE !!!! */}
-            // <Card key={index} id={index} onClick={props.onOpen}>
             <Card key={index} id={index} onClick={props.onOpen}>
               <ListItem
                 id={index}
@@ -118,23 +108,6 @@ const TaskList = (props) => {
           );
         })}
       </UlStyle>
-      {/* test ul */}
-      {/* <UlStyle className="YEEAAAHHHHHHHH">
-        {props.filteredItems.map((task, index) => {
-          return (
-            <Card key={index} id={index} onClick={props.onOpen}>
-              <ListItem
-                key={task.id}
-                id={task.id}
-                task={task.text}
-                onOpen={openTaskModalHandler}
-                onClose={closeTaskModalHandler}
-                onRemove={props.onRemove}
-              />
-            </Card>
-          );
-        })}
-      </UlStyle> */}
     </Fragment>
   );
 };

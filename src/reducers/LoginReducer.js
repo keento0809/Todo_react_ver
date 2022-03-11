@@ -1,5 +1,3 @@
-import React from "react";
-
 const LoginReducer = (state, action) => {
   switch (action.type) {
     case "USERNAME_INPUT":

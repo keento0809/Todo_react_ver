@@ -24,35 +24,16 @@ const IconStyle = styled.div`
 `;
 
 const ListItem = (props) => {
+  // It could be possible to refactor?
   const taskInfo = [props.id, props.task];
-
-  // console.log(props.task);
 
   return (
     <Fragment>
-      {/* Default code. DO NOT CHANGE !!!! */}
-      {/*
-      <ListItemStyle>
-        <div>
-          <span>{props.task}</span>
-        </div>
-        <div>
-          <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
-            <FontAwesomeIcon icon={faPenToSquare} />
-          </IconStyle>
-          <IconStyle onClick={props.onRemove.bind(null, props.id)}>
-            <FontAwesomeIcon icon={faTrashCan} />
-          </IconStyle>
-        </div>
-      </ListItemStyle>
-      */}
-
       <ListItemStyle key={props.key}>
         <div>
           <span>{props.task}</span>
         </div>
         <div>
-          {/* <IconStyle onClick={props.onOpen.bind(null, props.task)}> */}
           <IconStyle onClick={props.onOpen.bind(null, taskInfo)}>
             <FontAwesomeIcon icon={faPenToSquare} />
           </IconStyle>

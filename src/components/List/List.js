@@ -92,7 +92,7 @@ const List = (props) => {
     setIsLoading(false);
   };
 
-  const addItemHandler = (item) => {
+  const addItemHandler = () => {
     const textChecker = textInputRef.current.value.trim().length;
 
     if (textChecker < 2 || textChecker > 16) {

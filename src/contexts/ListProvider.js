@@ -14,10 +14,6 @@ const initialState = {
   // Default code. DO NOT CHANGE !!!
   items: [],
   totalTask: 0,
-
-  // test
-  // items: ["test task1"],
-  // totalTask: 1,
 };
 
 const ListProvider = (props) => {
